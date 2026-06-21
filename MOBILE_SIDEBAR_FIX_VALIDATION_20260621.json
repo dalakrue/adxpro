@@ -1,0 +1,32 @@
+{
+  "package": "ADX_Quant_Pro_EURUSD_H1_Quality_Mobile_Reconstructed_20260621",
+  "fix_date": "2026-06-21",
+  "problem": "Streamlit native multipage sidebar covered the phone viewport.",
+  "permanent_fixes": [
+    "Root pages directory relocated to legacy_page_wrappers_disabled so Streamlit cannot auto-discover sidebar pages.",
+    ".streamlit/config.toml sets client.showSidebarNavigation=false.",
+    "Permanent CSS hides native sidebar, navigation, collapsed control, and overlay while reclaiming full viewport width.",
+    "Legacy enable/unlock functions are compatibility no-ops and cannot re-enable the sidebar.",
+    "Legacy sidebar_nav no longer calls the native sidebar API.",
+    "Main Page Menu remains the single navigation and connection surface."
+  ],
+  "validation": {
+    "python_files_compiled": 460,
+    "compileall": "PASS",
+    "pytest": "22 passed",
+    "targeted_sidebar_tests": "5 passed",
+    "streamlit_apptest_auth_guest_phone": "PASS",
+    "apptest_sidebar_widgets_auth": 0,
+    "apptest_sidebar_widgets_dashboard": 0,
+    "apptest_sidebar_widgets_phone_mode": 0,
+    "apptest_exceptions": 0,
+    "apptest_errors": 0,
+    "phone_mode_state": true,
+    "permanent_sidebar_state": true,
+    "streamlit_server_health": "ok",
+    "streamlit_cli_client_flag": "accepted",
+    "resolved_config_showSidebarNavigation": false
+  },
+  "entry_point": "streamlit run app.py",
+  "note": "Automated Streamlit phone-mode and sidebar regression checks passed. A physical iPhone was not available inside the build container."
+}

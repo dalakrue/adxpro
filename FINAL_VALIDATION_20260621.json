@@ -1,0 +1,69 @@
+{
+  "python_version": "3.13.5 (main, May  5 2026, 21:05:52) [GCC 14.2.0]",
+  "runtime_contract": "python-3.12",
+  "compile": {
+    "status": "PASS",
+    "python_files": 505,
+    "failures": []
+  },
+  "imports": [
+    {
+      "module": "app",
+      "status": "PASS"
+    },
+    {
+      "module": "adx_dashpoard",
+      "status": "PASS"
+    },
+    {
+      "module": "core.settings_run_orchestrator_20260617",
+      "status": "PASS"
+    },
+    {
+      "module": "core.regime_transition_trust_20260621",
+      "status": "PASS"
+    },
+    {
+      "module": "core.regime_trust_store_20260621",
+      "status": "PASS"
+    },
+    {
+      "module": "core.lunch_search_20260621",
+      "status": "PASS"
+    },
+    {
+      "module": "core.connector_state_machine_20260621",
+      "status": "PASS"
+    },
+    {
+      "module": "ui.lunch_search_20260621",
+      "status": "PASS"
+    },
+    {
+      "module": "ui.regime_transition_trust_center_20260621",
+      "status": "PASS"
+    },
+    {
+      "module": "ui.lunch_four_core_fields_20260619",
+      "status": "PASS"
+    },
+    {
+      "module": "tabs.dinner_unified_center_20260617",
+      "status": "PASS"
+    }
+  ],
+  "migration": {
+    "status": "PASS",
+    "returncode": 0,
+    "stdout": "ok: True\ndatabase: /tmp/tmpnxjslmu2/trust.duckdb\nbackup: None\nmigrated_tables: []\npreserved_rows: {}\nschema_tables: ['regime_transition_history', 'post_transition_outcome_history', 'prediction_calibration_history', 'drift_detector_history', 'decision_audit_history', 'component_error_history']\n",
+    "stderr": ""
+  },
+  "startup": {
+    "status": "PASS",
+    "health_response": "ok",
+    "last_error": "URLError(ConnectionRefusedError(111, 'Connection refused'))",
+    "log": "reports/streamlit_startup_20260621.log",
+    "returncode_after_stop": 0
+  },
+  "overall_status": "PASS"
+}

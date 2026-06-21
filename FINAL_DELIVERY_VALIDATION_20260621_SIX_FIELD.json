@@ -1,0 +1,16 @@
+{
+  "generated_at_utc": "2026-06-21T08:07:39.747301+00:00",
+  "original_non_generated_files": 840,
+  "current_non_generated_files": 868,
+  "missing_original_files": [],
+  "required_delivery_files_missing": [],
+  "exact_six_labels": true,
+  "field_gate_count": 6,
+  "protected_hashes_all_identical": true,
+  "python_ast_parse_errors": [],
+  "full_test_result": "338 passed in 99.52s",
+  "streamlit_preflight": "PASS",
+  "streamlit_health": "ok",
+  "generated_cache_directories_present": false,
+  "ok": true
+}

@@ -1,0 +1,290 @@
+{
+  "files": 35,
+  "passed_files": 35,
+  "failed_files": 0,
+  "timed_out_files": 0,
+  "passed_tests": 369,
+  "duration_seconds": 314.68,
+  "results": [
+    {
+      "file": "tests/test_20260618_projection_and_regime_upgrade.py",
+      "status": "PASS",
+      "returncode": 0,
+      "passed": 4,
+      "seconds": 6.375,
+      "output": "....                                                                     [100%]\n4 passed in 0.85s\n"
+    },
+    {
+      "file": "tests/test_advanced_reliability_shift_20260620.py",
+      "status": "PASS",
+      "returncode": 0,
+      "passed": 24,
+      "seconds": 11.855,
+      "output": "........................                                                 [100%]\n24 passed in 6.63s\n"
+    },
+    {
+      "file": "tests/test_canonical_runtime_20260617.py",
+      "status": "PASS",
+      "returncode": 0,
+      "passed": 12,
+      "seconds": 6.046,
+      "output": "............                                                             [100%]\n12 passed in 0.41s\n"
+    },
+    {
+      "file": "tests/test_causal_quant_end_to_end_20260618.py",
+      "status": "PASS",
+      "returncode": 0,
+      "passed": 10,
+      "seconds": 31.916,
+      "output": "..........                                                               [100%]\n10 passed in 26.08s\n"
+    },
+    {
+      "file": "tests/test_decision_product_20260617.py",
+      "status": "PASS",
+      "returncode": 0,
+      "passed": 19,
+      "seconds": 12.854,
+      "output": "...................                                                      [100%]\n19 passed in 6.94s\n"
+    },
+    {
+      "file": "tests/test_delivery_contract_20260621.py",
+      "status": "PASS",
+      "returncode": 0,
+      "passed": 5,
+      "seconds": 5.405,
+      "output": ".....                                                                    [100%]\n5 passed in 0.56s\n"
+    },
+    {
+      "file": "tests/test_end_to_end_sync_regressions_20260618.py",
+      "status": "PASS",
+      "returncode": 0,
+      "passed": 11,
+      "seconds": 5.35,
+      "output": "...........                                                              [100%]\n11 passed in 0.37s\n"
+    },
+    {
+      "file": "tests/test_external_architecture_20260619.py",
+      "status": "PASS",
+      "returncode": 0,
+      "passed": 14,
+      "seconds": 5.912,
+      "output": "..............                                                           [100%]\n14 passed in 0.29s\n"
+    },
+    {
+      "file": "tests/test_finnhub_connector_20260617.py",
+      "status": "PASS",
+      "returncode": 0,
+      "passed": 7,
+      "seconds": 7.167,
+      "output": ".......                                                                  [100%]\n7 passed in 1.39s\n"
+    },
+    {
+      "file": "tests/test_full_metric_canonical_sync_20260618.py",
+      "status": "PASS",
+      "returncode": 0,
+      "passed": 10,
+      "seconds": 13.303,
+      "output": "..........                                                               [100%]\n10 passed in 8.03s\n"
+    },
+    {
+      "file": "tests/test_full_metric_dinner_nlp_restore_20260618.py",
+      "status": "PASS",
+      "returncode": 0,
+      "passed": 6,
+      "seconds": 10.191,
+      "output": "......                                                                   [100%]\n6 passed in 3.84s\n"
+    },
+    {
+      "file": "tests/test_full_metric_regime_visibility_20260618.py",
+      "status": "PASS",
+      "returncode": 0,
+      "passed": 3,
+      "seconds": 5.08,
+      "output": "...                                                                      [100%]\n3 passed in 0.25s\n"
+    },
+    {
+      "file": "tests/test_history_performance_research_20260620.py",
+      "status": "PASS",
+      "returncode": 0,
+      "passed": 9,
+      "seconds": 9.314,
+      "output": ".........                                                                [100%]\n9 passed in 4.13s\n"
+    },
+    {
+      "file": "tests/test_lunch_four_core_fields_20260619.py",
+      "status": "PASS",
+      "returncode": 0,
+      "passed": 5,
+      "seconds": 5.585,
+      "output": ".....                                                                    [100%]\n5 passed in 0.25s\n"
+    },
+    {
+      "file": "tests/test_lunch_search_navigation_connectors_20260621.py",
+      "status": "PASS",
+      "returncode": 0,
+      "passed": 10,
+      "seconds": 8.601,
+      "output": "..........                                                               [100%]\n10 passed in 3.08s\n"
+    },
+    {
+      "file": "tests/test_lunch_user_corrections_20260621.py",
+      "status": "PASS",
+      "returncode": 0,
+      "passed": 9,
+      "seconds": 5.812,
+      "output": ".........                                                                [100%]\n9 passed in 0.30s\n"
+    },
+    {
+      "file": "tests/test_multiscale_probabilistic_upgrade_20260618.py",
+      "status": "PASS",
+      "returncode": 0,
+      "passed": 5,
+      "seconds": 6.284,
+      "output": ".....                                                                    [100%]\n5 passed in 0.80s\n"
+    },
+    {
+      "file": "tests/test_one_click_system_wide_20260618.py",
+      "status": "PASS",
+      "returncode": 0,
+      "passed": 6,
+      "seconds": 5.52,
+      "output": "......                                                                   [100%]\n6 passed in 0.25s\n"
+    },
+    {
+      "file": "tests/test_performance_architecture_20260619.py",
+      "status": "PASS",
+      "returncode": 0,
+      "passed": 30,
+      "seconds": 5.526,
+      "output": "..............................                                           [100%]\n30 passed in 0.42s\n"
+    },
+    {
+      "file": "tests/test_powerbi_path_calibration_20260617.py",
+      "status": "PASS",
+      "returncode": 0,
+      "passed": 2,
+      "seconds": 5.808,
+      "output": "..                                                                       [100%]\n2 passed in 0.41s\n"
+    },
+    {
+      "file": "tests/test_production_promotion_guard_20260621.py",
+      "status": "PASS",
+      "returncode": 0,
+      "passed": 22,
+      "seconds": 5.761,
+      "output": "......................                                                   [100%]\n22 passed in 0.76s\n"
+    },
+    {
+      "file": "tests/test_regime_transition_trust_20260621.py",
+      "status": "PASS",
+      "returncode": 0,
+      "passed": 7,
+      "seconds": 8.554,
+      "output": ".......                                                                  [100%]\n7 passed in 3.28s\n"
+    },
+    {
+      "file": "tests/test_research_validation_20260621.py",
+      "status": "PASS",
+      "returncode": 0,
+      "passed": 11,
+      "seconds": 6.012,
+      "output": "...........                                                              [100%]\n11 passed in 1.08s\n"
+    },
+    {
+      "file": "tests/test_selective_wait_policy_20260619.py",
+      "status": "PASS",
+      "returncode": 0,
+      "passed": 2,
+      "seconds": 5.31,
+      "output": "..                                                                       [100%]\n2 passed in 0.25s\n"
+    },
+    {
+      "file": "tests/test_settings_full_restore_20260619.py",
+      "status": "PASS",
+      "returncode": 0,
+      "passed": 3,
+      "seconds": 5.394,
+      "output": "...                                                                      [100%]\n3 passed in 0.23s\n"
+    },
+    {
+      "file": "tests/test_similar_day_intelligence_20260619.py",
+      "status": "PASS",
+      "returncode": 0,
+      "passed": 36,
+      "seconds": 16.327,
+      "output": "....................................                                     [100%]\n36 passed in 10.82s\n"
+    },
+    {
+      "file": "tests/test_six_field_upgrade_20260621.py",
+      "status": "PASS",
+      "returncode": 0,
+      "passed": 20,
+      "seconds": 5.139,
+      "output": "....................                                                     [100%]\n20 passed in 0.27s\n"
+    },
+    {
+      "file": "tests/test_streamlit_cloud_preflight_20260619.py",
+      "status": "PASS",
+      "returncode": 0,
+      "passed": 3,
+      "seconds": 6.744,
+      "output": "...                                                                      [100%]\n3 passed in 1.37s\n"
+    },
+    {
+      "file": "tests/test_sync_mobile_nlp_ai_final_20260618.py",
+      "status": "PASS",
+      "returncode": 0,
+      "passed": 6,
+      "seconds": 9.441,
+      "output": "......                                                                   [100%]\n6 passed in 3.67s\n"
+    },
+    {
+      "file": "tests/test_ten_paper_research_calibration_20260618.py",
+      "status": "PASS",
+      "returncode": 0,
+      "passed": 33,
+      "seconds": 42.18,
+      "output": "................................                                         [100%]\n32 passed, 1 deselected in 27.28s\n\n.                                                                        [100%]\n1 passed in 3.42s\n"
+    },
+    {
+      "file": "tests/test_ten_paper_shadow_layers_20260621.py",
+      "status": "PASS",
+      "returncode": 0,
+      "passed": 6,
+      "seconds": 7.637,
+      "output": "......                                                                   [100%]\n6 passed in 2.00s\n"
+    },
+    {
+      "file": "tests/test_trust_history_20260619.py",
+      "status": "PASS",
+      "returncode": 0,
+      "passed": 2,
+      "seconds": 5.725,
+      "output": "..                                                                       [100%]\n2 passed in 0.47s\n"
+    },
+    {
+      "file": "tests/test_ui_restoration_20260619.py",
+      "status": "PASS",
+      "returncode": 0,
+      "passed": 7,
+      "seconds": 5.837,
+      "output": ".......                                                                  [100%]\n7 passed in 0.24s\n"
+    },
+    {
+      "file": "tests/test_updated_requirements_20260619.py",
+      "status": "PASS",
+      "returncode": 0,
+      "passed": 6,
+      "seconds": 5.256,
+      "output": "......                                                                   [100%]\n6 passed in 0.28s\n"
+    },
+    {
+      "file": "tests/test_windows_connection_reset_fix_20260619.py",
+      "status": "PASS",
+      "returncode": 0,
+      "passed": 4,
+      "seconds": 5.459,
+      "output": "....                                                                     [100%]\n4 passed in 0.23s\n"
+    }
+  ]
+}

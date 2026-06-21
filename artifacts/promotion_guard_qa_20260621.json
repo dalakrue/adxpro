@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "artifact_checksum": "10604bd8fe3fd8c785fb851e7e40bab4dd92a59eeacbd6157a6c83474751d77d",
+  "deterministic_rerun_pass": true,
+  "rollback_test_pass": true,
+  "full_per_file_suite_passed": 369,
+  "passed_test_files": 35,
+  "failed_tests": 0,
+  "timed_out_tests": 0,
+  "test_results_artifact": "artifacts/per_file_test_results_20260621.json",
+  "test_command": "python /tmp/run_per_file_tests.py (35 independent pytest files; the legacy Streamlit import test was split to avoid a teardown hang)",
+  "streamlit_health_probe": "ok",
+  "note": "This artifact validates software determinism, rollback, full regression, and startup mechanics only. It does not establish OPE overlap, trading skill, tail calibration, or production promotion.",
+  "targeted_and_regression_tests_passed": 369
+}

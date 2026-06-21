@@ -1,0 +1,22 @@
+Version: new7-future-proof-ui-shell-2026-06-14
+Build Date: 2026-06-14
+Base ZIP: LAST WORKING ZIP uploaded by user
+Scope: Display/control layer only
+Logic Changed: No
+Main Fix: Future-proof app shell, session-state drawer, mobile CSS, UI health check, safety guard
+Compile Status: PASS (python -m compileall -q .)
+ZIP Integrity Status: PASS (zip -T)
+
+Logic Safety Guard Build: 2026-06-14
+Build Time: 2026-06-14 16:49:36
+Compile Status: passed (python -m compileall)
+ZIP Integrity Status: passed (zipfile testzip)
+Logic Changes: Safety wrapper only; original engines preserved.
+
+Sidebar Hard Fix Build: 2026-06-14
+Main Fix: Removed permanent force-hidden sidebar CSS, added optional JS native sidebar open/close, and mirrored critical sidebar controls in the main-page drawer.
+Compile Status: passed (python -m compileall)
+ZIP Integrity Status: passed (zipfile testzip after packaging)
+Logic Changes: No trading logic changes; display/control layer only.
+
+IMPORT_REPAIR=20260621_SELF_CONTAINED_LOADERS

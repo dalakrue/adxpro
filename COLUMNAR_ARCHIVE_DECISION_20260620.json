@@ -1,0 +1,323 @@
+{
+  "database": "data/canonical_runtime.sqlite3",
+  "database_size_bytes": 749568,
+  "max_row_count": 0,
+  "any_justified": false,
+  "tables": [
+    {
+      "table_name": "full_metric_overall_history",
+      "row_count": 0,
+      "database_size_bytes": 749568,
+      "row_threshold": 250000,
+      "size_threshold_bytes": 134217728,
+      "justified": false,
+      "reason": "SQLite remains the lower-complexity authority; measured history does not justify columnar migration."
+    },
+    {
+      "table_name": "protected_decision_history",
+      "row_count": 0,
+      "database_size_bytes": 749568,
+      "row_threshold": 250000,
+      "size_threshold_bytes": 134217728,
+      "justified": false,
+      "reason": "SQLite remains the lower-complexity authority; measured history does not justify columnar migration."
+    },
+    {
+      "table_name": "decision11_support_history",
+      "row_count": 0,
+      "database_size_bytes": 749568,
+      "row_threshold": 250000,
+      "size_threshold_bytes": 134217728,
+      "justified": false,
+      "reason": "SQLite remains the lower-complexity authority; measured history does not justify columnar migration."
+    },
+    {
+      "table_name": "decision_change_audit_history",
+      "row_count": 0,
+      "database_size_bytes": 749568,
+      "row_threshold": 250000,
+      "size_threshold_bytes": 134217728,
+      "justified": false,
+      "reason": "SQLite remains the lower-complexity authority; measured history does not justify columnar migration."
+    },
+    {
+      "table_name": "input_data_quality_history",
+      "row_count": 0,
+      "database_size_bytes": 749568,
+      "row_threshold": 250000,
+      "size_threshold_bytes": 134217728,
+      "justified": false,
+      "reason": "SQLite remains the lower-complexity authority; measured history does not justify columnar migration."
+    },
+    {
+      "table_name": "metric_availability_history",
+      "row_count": 0,
+      "database_size_bytes": 749568,
+      "row_threshold": 250000,
+      "size_threshold_bytes": 134217728,
+      "justified": false,
+      "reason": "SQLite remains the lower-complexity authority; measured history does not justify columnar migration."
+    },
+    {
+      "table_name": "powerbi_prediction_ledger",
+      "row_count": 0,
+      "database_size_bytes": 749568,
+      "row_threshold": 250000,
+      "size_threshold_bytes": 134217728,
+      "justified": false,
+      "reason": "SQLite remains the lower-complexity authority; measured history does not justify columnar migration."
+    },
+    {
+      "table_name": "powerbi_source_path_history",
+      "row_count": 0,
+      "database_size_bytes": 749568,
+      "row_threshold": 250000,
+      "size_threshold_bytes": 134217728,
+      "justified": false,
+      "reason": "SQLite remains the lower-complexity authority; measured history does not justify columnar migration."
+    },
+    {
+      "table_name": "powerbi_reconciled_path_history",
+      "row_count": 0,
+      "database_size_bytes": 749568,
+      "row_threshold": 250000,
+      "size_threshold_bytes": 134217728,
+      "justified": false,
+      "reason": "SQLite remains the lower-complexity authority; measured history does not justify columnar migration."
+    },
+    {
+      "table_name": "powerbi_forecast_settlement_history",
+      "row_count": 0,
+      "database_size_bytes": 749568,
+      "row_threshold": 250000,
+      "size_threshold_bytes": 134217728,
+      "justified": false,
+      "reason": "SQLite remains the lower-complexity authority; measured history does not justify columnar migration."
+    },
+    {
+      "table_name": "regime_overall_history",
+      "row_count": 0,
+      "database_size_bytes": 749568,
+      "row_threshold": 250000,
+      "size_threshold_bytes": 134217728,
+      "justified": false,
+      "reason": "SQLite remains the lower-complexity authority; measured history does not justify columnar migration."
+    },
+    {
+      "table_name": "regime_standard_history",
+      "row_count": 0,
+      "database_size_bytes": 749568,
+      "row_threshold": 250000,
+      "size_threshold_bytes": 134217728,
+      "justified": false,
+      "reason": "SQLite remains the lower-complexity authority; measured history does not justify columnar migration."
+    },
+    {
+      "table_name": "regime_changepoint_history",
+      "row_count": 0,
+      "database_size_bytes": 749568,
+      "row_threshold": 250000,
+      "size_threshold_bytes": 134217728,
+      "justified": false,
+      "reason": "SQLite remains the lower-complexity authority; measured history does not justify columnar migration."
+    },
+    {
+      "table_name": "regime_duration_history",
+      "row_count": 0,
+      "database_size_bytes": 749568,
+      "row_threshold": 250000,
+      "size_threshold_bytes": 134217728,
+      "justified": false,
+      "reason": "SQLite remains the lower-complexity authority; measured history does not justify columnar migration."
+    },
+    {
+      "table_name": "regime_transition_reliability_history",
+      "row_count": 0,
+      "database_size_bytes": 749568,
+      "row_threshold": 250000,
+      "size_threshold_bytes": 134217728,
+      "justified": false,
+      "reason": "SQLite remains the lower-complexity authority; measured history does not justify columnar migration."
+    },
+    {
+      "table_name": "regime_alpha_delta_history",
+      "row_count": 0,
+      "database_size_bytes": 749568,
+      "row_threshold": 250000,
+      "size_threshold_bytes": 134217728,
+      "justified": false,
+      "reason": "SQLite remains the lower-complexity authority; measured history does not justify columnar migration."
+    },
+    {
+      "table_name": "regime_conflict_history",
+      "row_count": 0,
+      "database_size_bytes": 749568,
+      "row_threshold": 250000,
+      "size_threshold_bytes": 134217728,
+      "justified": false,
+      "reason": "SQLite remains the lower-complexity authority; measured history does not justify columnar migration."
+    },
+    {
+      "table_name": "similar_day_query_history",
+      "row_count": 0,
+      "database_size_bytes": 749568,
+      "row_threshold": 250000,
+      "size_threshold_bytes": 134217728,
+      "justified": false,
+      "reason": "SQLite remains the lower-complexity authority; measured history does not justify columnar migration."
+    },
+    {
+      "table_name": "similar_day_ranked_match_history",
+      "row_count": 0,
+      "database_size_bytes": 749568,
+      "row_threshold": 250000,
+      "size_threshold_bytes": 134217728,
+      "justified": false,
+      "reason": "SQLite remains the lower-complexity authority; measured history does not justify columnar migration."
+    },
+    {
+      "table_name": "similar_day_outcome_history",
+      "row_count": 0,
+      "database_size_bytes": 749568,
+      "row_threshold": 250000,
+      "size_threshold_bytes": 134217728,
+      "justified": false,
+      "reason": "SQLite remains the lower-complexity authority; measured history does not justify columnar migration."
+    },
+    {
+      "table_name": "motif_history",
+      "row_count": 0,
+      "database_size_bytes": 749568,
+      "row_threshold": 250000,
+      "size_threshold_bytes": 134217728,
+      "justified": false,
+      "reason": "SQLite remains the lower-complexity authority; measured history does not justify columnar migration."
+    },
+    {
+      "table_name": "discord_history",
+      "row_count": 0,
+      "database_size_bytes": 749568,
+      "row_threshold": 250000,
+      "size_threshold_bytes": 134217728,
+      "justified": false,
+      "reason": "SQLite remains the lower-complexity authority; measured history does not justify columnar migration."
+    },
+    {
+      "table_name": "match_quality_calibration_history",
+      "row_count": 0,
+      "database_size_bytes": 749568,
+      "row_threshold": 250000,
+      "size_threshold_bytes": 134217728,
+      "justified": false,
+      "reason": "SQLite remains the lower-complexity authority; measured history does not justify columnar migration."
+    },
+    {
+      "table_name": "canonical_priority_history",
+      "row_count": 0,
+      "database_size_bytes": 749568,
+      "row_threshold": 250000,
+      "size_threshold_bytes": 134217728,
+      "justified": false,
+      "reason": "SQLite remains the lower-complexity authority; measured history does not justify columnar migration."
+    },
+    {
+      "table_name": "knn_rank_history",
+      "row_count": 0,
+      "database_size_bytes": 749568,
+      "row_threshold": 250000,
+      "size_threshold_bytes": 134217728,
+      "justified": false,
+      "reason": "SQLite remains the lower-complexity authority; measured history does not justify columnar migration."
+    },
+    {
+      "table_name": "greedy_rank_history",
+      "row_count": 0,
+      "database_size_bytes": 749568,
+      "row_threshold": 250000,
+      "size_threshold_bytes": 134217728,
+      "justified": false,
+      "reason": "SQLite remains the lower-complexity authority; measured history does not justify columnar migration."
+    },
+    {
+      "table_name": "reliability_conflict_history",
+      "row_count": 0,
+      "database_size_bytes": 749568,
+      "row_threshold": 250000,
+      "size_threshold_bytes": 134217728,
+      "justified": false,
+      "reason": "SQLite remains the lower-complexity authority; measured history does not justify columnar migration."
+    },
+    {
+      "table_name": "component_availability_history",
+      "row_count": 0,
+      "database_size_bytes": 749568,
+      "row_threshold": 250000,
+      "size_threshold_bytes": 134217728,
+      "justified": false,
+      "reason": "SQLite remains the lower-complexity authority; measured history does not justify columnar migration."
+    },
+    {
+      "table_name": "combined_evidence_explanation_history",
+      "row_count": 0,
+      "database_size_bytes": 749568,
+      "row_threshold": 250000,
+      "size_threshold_bytes": 134217728,
+      "justified": false,
+      "reason": "SQLite remains the lower-complexity authority; measured history does not justify columnar migration."
+    },
+    {
+      "table_name": "canonical_generation_change_history",
+      "row_count": 0,
+      "database_size_bytes": 749568,
+      "row_threshold": 250000,
+      "size_threshold_bytes": 134217728,
+      "justified": false,
+      "reason": "SQLite remains the lower-complexity authority; measured history does not justify columnar migration."
+    },
+    {
+      "table_name": "ai_assistant_history",
+      "row_count": 0,
+      "database_size_bytes": 749568,
+      "row_threshold": 250000,
+      "size_threshold_bytes": 134217728,
+      "justified": false,
+      "reason": "SQLite remains the lower-complexity authority; measured history does not justify columnar migration."
+    },
+    {
+      "table_name": "ai_evidence_reference_history",
+      "row_count": 0,
+      "database_size_bytes": 749568,
+      "row_threshold": 250000,
+      "size_threshold_bytes": 134217728,
+      "justified": false,
+      "reason": "SQLite remains the lower-complexity authority; measured history does not justify columnar migration."
+    },
+    {
+      "table_name": "ai_answer_consistency_history",
+      "row_count": 0,
+      "database_size_bytes": 749568,
+      "row_threshold": 250000,
+      "size_threshold_bytes": 134217728,
+      "justified": false,
+      "reason": "SQLite remains the lower-complexity authority; measured history does not justify columnar migration."
+    },
+    {
+      "table_name": "cache_diagnostics_history",
+      "row_count": 0,
+      "database_size_bytes": 749568,
+      "row_threshold": 250000,
+      "size_threshold_bytes": 134217728,
+      "justified": false,
+      "reason": "SQLite remains the lower-complexity authority; measured history does not justify columnar migration."
+    },
+    {
+      "table_name": "performance_history",
+      "row_count": 0,
+      "database_size_bytes": 749568,
+      "row_threshold": 250000,
+      "size_threshold_bytes": 134217728,
+      "justified": false,
+      "reason": "SQLite remains the lower-complexity authority; measured history does not justify columnar migration."
+    }
+  ]
+}

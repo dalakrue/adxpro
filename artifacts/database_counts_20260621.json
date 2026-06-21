@@ -1,0 +1,119 @@
+{
+  "data/adx_runtime_store.sqlite3": {
+    "integrity": "ok",
+    "tables": 3,
+    "populated": {
+      "canonical_summary": 12
+    },
+    "zero_row_tables": [
+      "frame_manifest",
+      "ai_conversation"
+    ]
+  },
+  "data/adx_similarity_store.sqlite3": {
+    "integrity": "ok",
+    "tables": 2,
+    "populated": {},
+    "zero_row_tables": [
+      "similar_day_feature_store",
+      "similar_day_generations"
+    ]
+  },
+  "data/canonical_runtime.sqlite3": {
+    "integrity": "ok",
+    "tables": 78,
+    "populated": {
+      "runs": 9,
+      "run_snapshots": 9,
+      "history_catalog": 44
+    },
+    "zero_row_tables": [
+      "performance_trace",
+      "history_watermarks",
+      "full_metric_overall_history",
+      "protected_decision_history",
+      "decision11_support_history",
+      "decision_change_audit_history",
+      "input_data_quality_history",
+      "metric_availability_history",
+      "powerbi_prediction_ledger",
+      "powerbi_source_path_history",
+      "powerbi_reconciled_path_history",
+      "powerbi_forecast_settlement_history",
+      "regime_overall_history",
+      "regime_standard_history",
+      "regime_changepoint_history",
+      "regime_duration_history",
+      "regime_transition_reliability_history",
+      "regime_alpha_delta_history",
+      "regime_conflict_history",
+      "similar_day_query_history",
+      "similar_day_ranked_match_history",
+      "similar_day_outcome_history",
+      "motif_history",
+      "discord_history",
+      "match_quality_calibration_history",
+      "canonical_priority_history",
+      "knn_rank_history",
+      "greedy_rank_history",
+      "reliability_conflict_history",
+      "component_availability_history",
+      "combined_evidence_explanation_history",
+      "canonical_generation_change_history",
+      "ai_assistant_history",
+      "ai_evidence_reference_history",
+      "ai_answer_consistency_history",
+      "cache_diagnostics_history",
+      "performance_history",
+      "data_quality_generation",
+      "data_quality_constraint_result",
+      "data_quality_metric_history",
+      "rejected_calculation_generation",
+      "conditional_predictive_ability_history",
+      "research_spa_results",
+      "covariate_shift_conformal_history",
+      "fforma_shadow_history",
+      "expert_weight_history",
+      "expert_tracker_state",
+      "expert_tracker_comparison",
+      "ml_production_readiness_history",
+      "sliding_monitoring_state",
+      "bounded_quantile_monitoring_state",
+      "model_x_knockoff_feature_history",
+      "online_fdr_test_history",
+      "online_fdr_state",
+      "reject_option_history",
+      "flexible_loss_history",
+      "model_explanation_cache",
+      "monotonicity_validation_history",
+      "delta_maintenance_history",
+      "exact_delta_state",
+      "provenance_node",
+      "provenance_edge",
+      "metamorphic_test_history",
+      "calm_operation_classification",
+      "evidence_gate_history",
+      "research_paper_run",
+      "source_freshness_history",
+      "schema_drift_history",
+      "candle_integrity_history",
+      "data_lint_history",
+      "revision_lineage_history",
+      "cleaning_impact_history",
+      "incremental_refresh_history",
+      "mobile_render_budget_history",
+      "approximate_preview_audit_history"
+    ]
+  },
+  "data/quant_app.sqlite3": {
+    "integrity": "ok",
+    "tables": 3,
+    "populated": {
+      "app_events": 177
+    },
+    "zero_row_tables": [
+      "advanced_reliability_shift_snapshots_v2",
+      "advanced_reliability_shift_vectors_v2"
+    ]
+  }
+}

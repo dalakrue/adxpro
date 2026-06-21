@@ -1,0 +1,46 @@
+{
+  "320": {
+    "off_policy": {
+      "duration_ms": 165.976,
+      "peak_python_mb": 0.663,
+      "status": "BLOCKED"
+    },
+    "anchor": {
+      "duration_ms": 62.944,
+      "peak_python_mb": 1.575,
+      "status": "FAIL"
+    },
+    "hsmm": {
+      "duration_ms": 11.376,
+      "peak_python_mb": 0.224,
+      "status": "PASS"
+    },
+    "tail_drawdown": {
+      "duration_ms": 116.676,
+      "peak_python_mb": 0.296,
+      "status": "PASS"
+    }
+  },
+  "2000": {
+    "off_policy": {
+      "duration_ms": 968.064,
+      "peak_python_mb": 3.529,
+      "status": "EVALUATED"
+    },
+    "anchor": {
+      "duration_ms": 760.754,
+      "peak_python_mb": 47.085,
+      "status": "PASS"
+    },
+    "hsmm": {
+      "duration_ms": 24.971,
+      "peak_python_mb": 1.288,
+      "status": "PASS"
+    },
+    "tail_drawdown": {
+      "duration_ms": 421.464,
+      "peak_python_mb": 1.718,
+      "status": "PASS"
+    }
+  }
+}

@@ -1,0 +1,22 @@
+Final user-request upgrade — 2026-06-14
+
+Applied changes:
+1. AI Assistant Lite moved into Research as an inner tab.
+2. AI Assistant result display now appears above the question box and input field.
+3. Added an Answer button beside Analyze for the typed input field.
+4. AI Assistant local NLP recognition is hidden inside Open / Close fields.
+5. AI Assistant copy buttons are placed directly below the result display.
+6. Lunch-local App Login / Logout saved-locally panel is hidden.
+7. Regime inner tab now prefers Data Visualization / Lunch unified regime sync sources.
+8. Regime dashboard now shows sync source, confidence, reliability, stability, efficiency, priority, forecast, prediction, and history.
+9. Home/Lunch priority/greedy table display patch fixes flat constant values by using existing row/hour/metric context for display ranking.
+10. Data Visualization is moved inside Lunch as an Open / Close section below the Lunch metric area.
+11. Lunch Compact Full Copy — No History now has a real click-to-copy button with download fallback.
+12. NY + London Next 6H + Unified Home Sync remains inside Lunch metric flow and feeds regime/AI sync.
+
+Safety notes:
+- No external APIs added.
+- No heavy model added.
+- No new prediction engine added.
+- Existing calculations are preserved; patches are additive/display wrappers.
+- Python compile checks passed in the build sandbox.

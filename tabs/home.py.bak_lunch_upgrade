@@ -1,0 +1,512 @@
+# Compact wrapper for Home tab. Original implementation is preserved.
+from core.global_upgrade import render_page_shell, render_tab_footer
+from core.full_system_upgrade import render_home_upgrade_panel
+from .home_split.legacy.implementation import show as _original_show
+
+
+def _score_from_row(row):
+    import re
+    import pandas as pd
+    for col in ["10_reversal_score", "score", "active_count", "reversal_score", "final_score", "10_reverse_decision", "raw_drivers"]:
+        if col in row and pd.notna(row.get(col)):
+            try:
+                return int(round(float(row.get(col))))
+            except Exception:
+                pass
+    for col in ["decision", "reversal_decision", "10_reversal_decision", "10_reverse_decision"]:
+        if col in row and pd.notna(row.get(col)):
+            m = re.search(r"(\d+(?:\.\d+)?)", str(row.get(col)))
+            if m:
+                try:
+                    return int(round(float(m.group(1))))
+                except Exception:
+                    pass
+    return 0
+
+
+def _load_reversal_scan():
+    import pandas as pd
+    import streamlit as st
+    scan = st.session_state.get("home_reversal_25d_scan")
+    if isinstance(scan, pd.DataFrame) and not scan.empty:
+        out = scan.copy()
+        out["10_reversal_score"] = out.apply(_score_from_row, axis=1)
+        return out
+    try:
+        from .home_split import doo_prime_deep
+        from core.v6_final_ui_logic_patch import get_best_shared_df
+        df = get_best_shared_df()
+        if isinstance(df, pd.DataFrame) and not df.empty and hasattr(doo_prime_deep, "_scan_reversal_history_table"):
+            scan, _engines = doo_prime_deep._scan_reversal_history_table(df=df, days=25)
+            if isinstance(scan, pd.DataFrame) and not scan.empty:
+                scan = scan.copy()
+                scan["10_reversal_score"] = scan.apply(_score_from_row, axis=1)
+                st.session_state["home_reversal_25d_scan"] = scan
+                return scan
+    except Exception:
+        pass
+    return pd.DataFrame()
+
+
+def _render_high_reversal_table(scan=None):
+    """One Home field for locked 25D 10-Reversal values >= 8/10."""
+    try:
+        import pandas as pd
+        import streamlit as st
+        from core.pro_terminal_uiux import apply_pro_terminal_css
+    except Exception:
+        return
+
+    apply_pro_terminal_css()
+    if scan is None:
+        scan = _load_reversal_scan()
+
+    st.markdown('<div class="qx-highrev-shell qx-home-pop-card">', unsafe_allow_html=True)
+    with st.expander("🚨 Open / Close ONE FIELD — 25D Locked 10-Reversal History ≥ 8/10", expanded=False):
+        st.caption("Restored 25-day scan. Shows only closed-hour rows where 10-Reversal Decision is 8/10 or higher. Table includes out-of-10 score.")
+        if not isinstance(scan, pd.DataFrame) or scan.empty:
+            st.info("No 25D locked reversal scan is loaded yet. Connect/refresh market data first, then open this field again.")
+            st.markdown('</div>', unsafe_allow_html=True)
+            return
+
+        out = scan.copy()
+        if "10_reversal_score" not in out.columns:
+            out["10_reversal_score"] = out.apply(_score_from_row, axis=1)
+        high = out[pd.to_numeric(out["10_reversal_score"], errors="coerce").fillna(0) >= 8].copy()
+        if high.empty:
+            st.warning("The current locked scan has no rows with 10-Reversal Decision ≥ 8/10.")
+            st.markdown('</div>', unsafe_allow_html=True)
+            return
+
+        try:
+            if "date" in high.columns and "hour" in high.columns:
+                hour = high["hour"].astype(str).str.extract(r"(\d{1,2})", expand=False).fillna("0")
+                high["_time_sort"] = pd.to_datetime(high["date"].astype(str) + " " + hour + ":00", errors="coerce")
+                high = high.sort_values("_time_sort", ascending=False, na_position="last")
+        except Exception:
+            pass
+
+        today_key = pd.Timestamp.now().strftime("%Y-%m-%d")
+        today_high = high[high["date"].astype(str).eq(today_key)].copy() if "date" in high.columns else pd.DataFrame()
+        best = high.sort_values("10_reversal_score", ascending=False).iloc[0]
+        latest = high.iloc[0]
+
+        c1, c2, c3, c4 = st.columns(4)
+        c1.metric("≥ 8/10 Total 25D", int(len(high)))
+        c2.metric("Today ≥ 8/10", int(len(today_high)))
+        c3.metric("Highest Score", f"{int(best.get('10_reversal_score', 0))}/10")
+        c4.metric("Latest ≥8 Hour", f"{latest.get('date', '')} {latest.get('hour', '')}".strip(), f"{int(latest.get('10_reversal_score', 0))}/10")
+
+        wanted = ["date", "hour", "10_reversal_score", "decision", "bias", "direction", "state", "weighted_score", "phase_transition_score", "phase_transition_state", "phase_reasons", "locked", "no_future", "phase_no_future"]
+        show_cols = [c for c in wanted if c in high.columns] or list(high.columns[:12])
+        st.dataframe(high[show_cols], use_container_width=True, hide_index=True)
+    st.markdown('</div>', unsafe_allow_html=True)
+
+
+def _render_low_reversal_table(scan=None):
+    """One Home field for 10-Reversal values <= 3/10."""
+    try:
+        import pandas as pd
+        import streamlit as st
+        from core.pro_terminal_uiux import apply_pro_terminal_css
+    except Exception:
+        return
+
+    apply_pro_terminal_css()
+    if scan is None:
+        scan = _load_reversal_scan()
+
+    st.markdown('<div class="qx-lowrev-shell qx-home-pop-card">', unsafe_allow_html=True)
+    with st.expander("✅ Open / Close ONE FIELD — 10-Reversal Calm Table ≤ 3/10", expanded=False):
+        st.caption("One field only. Shows closed-hour rows where 10-Reversal Decision is 3/10 or lower.")
+        if not isinstance(scan, pd.DataFrame) or scan.empty:
+            st.info("No 25D locked reversal scan is loaded yet. Connect/refresh market data first, then open this field again.")
+            st.markdown('</div>', unsafe_allow_html=True)
+            return
+
+        out = scan.copy()
+        if "10_reversal_score" not in out.columns:
+            out["10_reversal_score"] = out.apply(_score_from_row, axis=1)
+        low = out[pd.to_numeric(out["10_reversal_score"], errors="coerce").fillna(99) <= 3].copy()
+        if low.empty:
+            st.warning("The current locked scan has no rows with 10-Reversal Decision ≤ 3/10.")
+            st.markdown('</div>', unsafe_allow_html=True)
+            return
+
+        today_key = pd.Timestamp.now().strftime("%Y-%m-%d")
+        today_low = low[low["date"].astype(str).eq(today_key)].copy() if "date" in low.columns else pd.DataFrame()
+
+        c1, c2, c3, c4 = st.columns(4)
+        c1.metric("≤ 3/10 Total 25D", int(len(low)))
+        c2.metric("Today ≤ 3/10", int(len(today_low)))
+        c3.metric("Lowest Score", f"{int(low['10_reversal_score'].min())}/10")
+        latest = low.iloc[0]
+        c4.metric("Latest Calm Hour", f"{latest.get('date', '')} {latest.get('hour', '')}".strip(), f"{int(latest.get('10_reversal_score', 0))}/10")
+
+        wanted = ["date", "hour", "10_reversal_score", "decision", "bias", "direction", "state", "weighted_score", "phase_transition_score", "phase_transition_state", "phase_reasons", "locked", "no_future", "phase_no_future"]
+        show_cols = [c for c in wanted if c in low.columns] or list(low.columns[:12])
+
+        st.markdown("#### Today calm rows")
+        if today_low.empty:
+            st.info("No ≤ 3/10 rows for today yet.")
+        else:
+            st.dataframe(today_low[show_cols], use_container_width=True, hide_index=True)
+        st.markdown("#### 25D calm rows ≤ 3/10")
+        st.dataframe(low[show_cols], use_container_width=True, hide_index=True)
+    st.markdown('</div>', unsafe_allow_html=True)
+
+
+
+def _render_three_point_change_metric(scan=None):
+    """Regime Shift Indicator based on now/prev/prev-prev 10-Reversal scores."""
+    try:
+        import pandas as pd
+        import streamlit as st
+        if scan is None:
+            scan = _load_reversal_scan()
+        if not isinstance(scan, pd.DataFrame) or scan.empty:
+            st.metric("Regime Shift Indicator", "Need data", "connect/refresh")
+            return
+        d = scan.copy()
+        if "10_reversal_score" not in d.columns:
+            d["10_reversal_score"] = d.apply(_score_from_row, axis=1)
+        try:
+            if "date" in d.columns and "hour" in d.columns:
+                hour = d["hour"].astype(str).str.extract(r"(\d{1,2})", expand=False).fillna("0")
+                d["_t_metric"] = pd.to_datetime(d["date"].astype(str) + " " + hour + ":00", errors="coerce")
+                d = d.sort_values("_t_metric", ascending=False, na_position="last")
+        except Exception:
+            pass
+        vals = pd.to_numeric(d["10_reversal_score"], errors="coerce").dropna().head(3).tolist()
+        while len(vals) < 3:
+            vals.append(vals[-1] if vals else 0.0)
+        now, prev, prev2 = [float(v) for v in vals[:3]]
+        speed = now - prev
+        accel = (now - prev) - (prev - prev2)
+        compression = abs(now - ((now + prev + prev2) / 3.0))
+        regime_power = max(0.0, min(100.0, (now * 7.0) + (abs(speed) * 12.0) + (max(accel, 0) * 8.0) + (compression * 5.0)))
+        if now >= 8 or regime_power >= 75:
+            label, color, bg = "DANGER SHIFT", "#ff3b30", "rgba(255,59,48,.14)"
+        elif now >= 6 or regime_power >= 55:
+            label, color, bg = "WATCH SHIFT", "#ff9f0a", "rgba(255,159,10,.14)"
+        elif now <= 3 and abs(speed) <= 1:
+            label, color, bg = "CALM / RESET", "#34c759", "rgba(52,199,89,.14)"
+        else:
+            label, color, bg = "NEUTRAL", "#5ac8fa", "rgba(90,200,250,.14)"
+        st.markdown(
+            f"""
+            <div style="border:1px solid {color};background:{bg};border-radius:16px;padding:12px 14px;box-shadow:0 10px 28px rgba(0,0,0,.10);">
+              <div style="font-size:12px;opacity:.78;font-weight:800;">REGIME SHIFT INDICATOR</div>
+              <div style="font-size:24px;font-weight:900;color:{color};line-height:1.15;">{label}</div>
+              <div style="font-size:13px;margin-top:4px;">Power <b>{regime_power:.0f}/100</b> · Score <b>{now:.0f}/{prev:.0f}/{prev2:.0f}</b></div>
+              <div style="font-size:12px;opacity:.82;margin-top:3px;">Speed {speed:+.1f} · Accel {accel:+.1f} · Mean deviation {compression:.1f}</div>
+            </div>
+            """,
+            unsafe_allow_html=True,
+        )
+    except Exception:
+        pass
+
+def _render_home_top_reversal_command_center():
+    """Home placement controller: 10-Reversal first, with metrics beside title."""
+    try:
+        import pandas as pd
+        import streamlit as st
+        scan = _load_reversal_scan()
+        low_total = 0
+        last_low_hour = "No ≤3 hour"
+        last_hour_score = "—"
+        if isinstance(scan, pd.DataFrame) and not scan.empty:
+            vals = pd.to_numeric(scan.get("10_reversal_score"), errors="coerce")
+            low_total = int((vals <= 3).sum())
+            # Latest row by existing sort; if hour/date available this is newest closed hour in scan.
+            latest = scan.iloc[0]
+            try:
+                latest_score = int(round(float(latest.get("10_reversal_score", 0))))
+                last_hour_score = f"{latest_score}/10"
+                
+                low_rows = scan[pd.to_numeric(scan.get("10_reversal_score"), errors="coerce") <= 3].copy()
+                if isinstance(low_rows, pd.DataFrame) and not low_rows.empty:
+                    low_latest = low_rows.iloc[0]
+                    last_low_hour = f"{low_latest.get('date', '')} {low_latest.get('hour', '')}".strip()
+                    last_hour_score = f"{int(round(float(low_latest.get('10_reversal_score', 0))))}/10"
+            except Exception:
+                pass
+        title_cols = st.columns([2.0, 1, 1, 1.7])
+        title_cols[0].markdown("### 🚨 10-Reversal Decision")
+        title_cols[1].metric("Latest Hour ≤3/10", last_low_hour, last_hour_score)
+        title_cols[2].metric("25D Total ≤3/10", low_total)
+        with title_cols[3]:
+            _render_three_point_change_metric(scan)
+        st.caption("All 10-Reversal / reverse-decision sections are placed first, before copy, refresh, sessions, account, and analytics.")
+        try:
+            from .home_split.doo_prime_deep import render_reversal_home_banner
+            render_reversal_home_banner()
+        except Exception as exc:
+            with st.expander("Show 10-Reversal top banner error", expanded=False):
+                st.exception(exc)
+        _render_high_reversal_table(scan)
+        _render_low_reversal_table(scan)
+    except Exception:
+        pass
+
+
+def _render_home_copy_refresh_bar():
+    try:
+        import streamlit as st
+        import pandas as pd
+        from core.navigation_parts.connection import _connect_now
+        from .home_split.legacy import implementation as impl
+        build = getattr(impl, "_build_home_copy_payload", None)
+        copy_box = getattr(impl, "_copy_home_data_box", None)
+
+        st.markdown("### 📋 Copy + Refresh")
+        c1, c2 = st.columns(2)
+        with c1:
+            if st.button("📋 Build + Copy Home Data", key="home_v17_copy_after_reversal", use_container_width=True):
+                if callable(build):
+                    st.session_state.home_copy_export_text = build()
+                    st.session_state.home_copy_export_built_at = str(pd.Timestamp.now())
+                else:
+                    st.warning("Copy builder is not loaded yet.")
+        with c2:
+            if st.button("🔁 Refresh Home Now", key="home_v17_refresh_after_reversal", use_container_width=True):
+                _connect_now("Home refresh after reversal", quick=True)
+
+        rows = len(st.session_state.get("last_df")) if st.session_state.get("last_df") is not None else 0
+        st.caption(f"Source: {st.session_state.get('source','DISCONNECTED')} | Timeframe: {st.session_state.get('timeframe','M1')} | Rows: {rows:,}")
+        text = st.session_state.get("home_copy_export_text", "")
+        if text and callable(copy_box):
+            copy_box(text=text)
+    except Exception as exc:
+        import streamlit as st
+        with st.expander("Show Copy/Refresh error", expanded=False):
+            st.exception(exc)
+
+
+def _render_regime_zone_range_panel():
+    """One Home open/close field for today/monthly regime + supply/resistance/order/impulse zones and TP range."""
+    try:
+        import pandas as pd
+        import streamlit as st
+        df = st.session_state.get("last_df")
+        if not isinstance(df, pd.DataFrame) or df.empty:
+            with st.expander("📂 Open / Close ONE FIELD — Today + Monthly Regime / Zones / TP Range", expanded=False):
+                st.info("No market dataframe yet. Connect or refresh first.")
+            return
+        d = df.copy()
+        # Normalize common OHLC names without changing source dataframe.
+        cols = {str(c).lower(): c for c in d.columns}
+        close_c = cols.get("close") or cols.get("c")
+        high_c = cols.get("high") or cols.get("h")
+        low_c = cols.get("low") or cols.get("l")
+        time_c = cols.get("time") or cols.get("datetime") or cols.get("date")
+        if not all([close_c, high_c, low_c]):
+            with st.expander("📂 Open / Close ONE FIELD — Today + Monthly Regime / Zones / TP Range", expanded=False):
+                st.warning("OHLC columns not found. Need close/high/low columns for regime and zone table.")
+            return
+        if time_c:
+            d["_time"] = pd.to_datetime(d[time_c], errors="coerce")
+        else:
+            d["_time"] = pd.date_range(end=pd.Timestamp.now(), periods=len(d), freq="min")
+        d = d.dropna(subset=["_time", close_c, high_c, low_c])
+        if d.empty:
+            return
+        today_date = d["_time"].max().date()
+        today = d[d["_time"].dt.date.eq(today_date)].copy()
+        monthly = d[d["_time"] >= (d["_time"].max() - pd.Timedelta(days=30))].copy()
+
+        def summarize(name, x):
+            if x.empty:
+                return {"Range": name, "Regime": "NO DATA"}
+            close = pd.to_numeric(x[close_c], errors="coerce")
+            high = pd.to_numeric(x[high_c], errors="coerce")
+            low = pd.to_numeric(x[low_c], errors="coerce")
+            first, last = float(close.dropna().iloc[0]), float(close.dropna().iloc[-1])
+            hi, lo = float(high.max()), float(low.min())
+            rng = max(hi - lo, 1e-9)
+            move_pct = (last - first) / max(abs(first), 1e-9) * 100
+            pos = (last - lo) / rng
+            regime = "BULLISH TREND" if move_pct > 0.10 and pos > 0.55 else "BEARISH TREND" if move_pct < -0.10 and pos < 0.45 else "RANGE / ACCUMULATION"
+            atr_like = (high - low).rolling(14, min_periods=1).mean().iloc[-1]
+            tp_buy_low, tp_buy_high = last + float(atr_like) * 0.8, last + float(atr_like) * 1.6
+            tp_sell_low, tp_sell_high = last - float(atr_like) * 0.8, last - float(atr_like) * 1.6
+            return {
+                "Range": name,
+                "Start": str(x["_time"].min()),
+                "End": str(x["_time"].max()),
+                "Regime": regime,
+                "Current Price": round(last, 3),
+                "Supply Zone": f"{round(hi - rng*0.12,3)} → {round(hi,3)}",
+                "Resistance Zone": f"{round(hi - rng*0.22,3)} → {round(hi - rng*0.12,3)}",
+                "Order Zone": f"{round(lo + rng*0.38,3)} → {round(lo + rng*0.62,3)}",
+                "Impulse Zone": f"{round(lo,3)} → {round(lo + rng*0.18,3)} / {round(hi - rng*0.18,3)} → {round(hi,3)}",
+                "TP Buy Range": f"{round(tp_buy_low,3)} → {round(tp_buy_high,3)}",
+                "TP Sell Range": f"{round(tp_sell_high,3)} → {round(tp_sell_low,3)}",
+            }
+        table = pd.DataFrame([summarize("Today", today), summarize("Monthly / Last 30D", monthly)])
+        with st.expander("📂 Open / Close ONE FIELD — Today + Monthly Regime / Zones / TP Range", expanded=False):
+            st.caption("One table only: today regime, monthly regime, supply/resistance/order/impulse zones, and TP suggestion range. Uses current shared OHLC data only.")
+            st.dataframe(table, use_container_width=True, hide_index=True)
+    except Exception as exc:
+        import streamlit as st
+        with st.expander("Show Regime / Zone panel error", expanded=False):
+            st.exception(exc)
+
+
+def _render_home_dashboard():
+    # V25: Launcher inner tab removed. Keep only clean Home fields and the
+    # existing original logic is preserved in files but not stacked here.
+    render_home_upgrade_panel()
+    _render_home_top_reversal_command_center()
+    _render_home_copy_refresh_bar()
+    _render_regime_zone_range_panel()
+
+
+
+def _build_short_necessary_copy_text():
+    """Small phone-friendly copy payload: only the important decision values."""
+    import json
+    import streamlit as st
+    exp = st.session_state.get("eurusd_h1_matrix_export", {}) or {}
+    scores = exp.get("scores", {}) if isinstance(exp, dict) else {}
+    reverse10 = exp.get("reverse10", []) if isinstance(exp, dict) else []
+    lines = [
+        "NECESSARY SHORT COPY",
+        f"Symbol: {st.session_state.get('symbol','EURUSD')}",
+        f"Timeframe: {st.session_state.get('timeframe','H1')}",
+        f"Source: {st.session_state.get('source','DISCONNECTED')}",
+    ]
+    if isinstance(scores, dict) and scores:
+        for k in ["Decision", "Direction", "Master /10", "Entry /10", "Hold /10", "TP /10", "Exit Risk /10"]:
+            if k in scores:
+                lines.append(f"{k}: {scores.get(k)}")
+    if isinstance(reverse10, list) and reverse10:
+        lines.append("Reverse 10 decision factors:")
+        for r in reverse10[:10]:
+            if isinstance(r, dict):
+                lines.append(f"- {r.get('No','')}. {r.get('10 Reverse-Style Factor','Factor')}: {r.get('Scale /10','?')}/10 | {r.get('Decision','')}")
+    elif isinstance(exp, dict) and exp:
+        lines.append("Metric export exists but short score keys were not found.")
+    else:
+        lines.append("No metric export yet. Press Run Calculate Metric first.")
+    return "\n".join(str(x) for x in lines if str(x).strip())
+
+
+def _render_short_necessary_copy_button(location="home_metric"):
+    import streamlit as st
+    try:
+        from core.pro_terminal_uiux import render_mobile_copy_button
+        payload = _build_short_necessary_copy_text()
+        render_mobile_copy_button("Copy Necessary Short Only", payload, f"necessary_short_{location}")
+        with st.expander("Fallback text — Necessary Short Copy", expanded=False):
+            st.text_area("Long-press / select all if phone browser blocks copy", payload, height=180, key=f"necessary_short_fallback_{location}")
+    except Exception:
+        st.text_area("Necessary Short Copy", _build_short_necessary_copy_text(), height=180, key=f"necessary_short_plain_{location}")
+
+def _render_metric_inner_tab():
+    import json
+    import streamlit as st
+
+    st.markdown("### 📊 Metric")
+    st.caption("EURUSD H1 decision metric is now an inner Home section. It calculates only after you press Run Calculate.")
+
+    c1, c2 = st.columns([2, 1])
+    with c1:
+        if st.button("▶ Run Calculate Metric", use_container_width=True, key="metric_run_calculate_button"):
+            st.session_state["metric_run_calculate"] = True
+            st.success("Metric calculation enabled for this session.")
+    with c2:
+        if st.button("⏸ Stop Metric", use_container_width=True, key="metric_stop_calculate_button"):
+            st.session_state["metric_run_calculate"] = False
+            st.info("Metric calculation stopped. Tables will not run until you press Run Calculate again.")
+
+    st.markdown("#### 📋 Phone copy")
+    _render_short_necessary_copy_button("home_metric_top")
+
+    if not bool(st.session_state.get("metric_run_calculate", False)):
+        with st.expander("📂 Open / Close — Metric waiting", expanded=True):
+            st.info("Press **Run Calculate Metric** to build EURUSD H1 tables and 25-day history. This prevents auto-run and saves RAM.")
+        return
+
+    try:
+        from .eurusd_h1_matrix import render_compact_panel
+        render_compact_panel("metric")
+        st.markdown("#### 📋 Updated short necessary copy")
+        _render_short_necessary_copy_button("home_metric_after")
+    except Exception as exc:
+        with st.expander("Show Metric error", expanded=True):
+            st.exception(exc)
+
+    with st.expander("📋 Open / Close — Copy Metric JSON", expanded=False):
+        payload = json.dumps(st.session_state.get("eurusd_h1_matrix_export", {}), default=str, indent=2)
+        st.text_area("Copy this metric data", payload, height=260, key="home_metric_copy_json")
+
+
+def _render_doo_prime_inner_tab():
+    import streamlit as st
+    try:
+        from .home_split.legacy import implementation as impl
+        impl.doo_prime_panel()
+    except Exception as exc:
+        with st.expander("Show Doo Prime inner tab error", expanded=True):
+            st.exception(exc)
+
+
+def _render_doo_prime_analysis_inner_tab():
+    import streamlit as st
+    try:
+        from .home_split.legacy import implementation as impl
+        impl.doo_prime_deep_analysis_panel()
+    except Exception as exc:
+        with st.expander("Show Doo Prime Analysis error", expanded=True):
+            st.exception(exc)
+
+
+def _home_inner_selector():
+    import streamlit as st
+    from core.styles import request_close_sidebar
+    # V26: Metric + Home are one first inner tab, but their functions are still
+    # rendered separately. Nothing is mathematically mixed.
+    choices = [("Metric + Home", "📊🏠"), ("Doo Prime", "🏦"), ("Doo Prime Analysis", "⚡")]
+    current = st.session_state.get("home_inner_tab", "Metric + Home")
+    if current in ("Home", "Launcher", "🏠 Launcher", "Metric", "Home Dashboard"):
+        current = "Metric + Home"
+        st.session_state.home_inner_tab = current
+    if current not in [x[0] for x in choices]:
+        current = "Metric + Home"
+        st.session_state.home_inner_tab = current
+    cols = st.columns(len(choices))
+    for idx, (name, icon) in enumerate(choices):
+        with cols[idx]:
+            label = f"✅ {icon} {name}" if current == name else f"{icon} {name}"
+            if st.button(label, key=f"home_inner_{name}", use_container_width=True):
+                st.session_state.home_inner_tab = name
+                current = name
+                request_close_sidebar()
+    return st.session_state.get("home_inner_tab", current)
+
+
+def _render_metric_home_combined_inner_tab():
+    import streamlit as st
+    st.caption("Combined tab only: Metric and Home sections stay separated; calculations and functions are not mixed.")
+    _render_home_top_reversal_command_center()
+    _render_metric_inner_tab()
+    with st.expander("🏠 Open / Close — Home clean dashboard fields", expanded=False):
+        _render_home_dashboard()
+
+
+def show():
+    from core.styles import request_close_sidebar
+    request_close_sidebar()
+    render_page_shell('Home', 'Metric + Home combined first. Functions stay separate; Doo Prime sections remain separate.', '🏠')
+    selected = _home_inner_selector()
+    if selected == "Metric + Home":
+        _render_metric_home_combined_inner_tab()
+    elif selected == "Doo Prime":
+        request_close_sidebar()
+        _render_doo_prime_inner_tab()
+    else:
+        request_close_sidebar()
+        _render_doo_prime_analysis_inner_tab()
+    render_tab_footer('Home')

@@ -1,0 +1,37 @@
+[
+  {
+    "path": "data/adx_runtime_store.sqlite3",
+    "engine": "sqlite",
+    "integrity": "ok",
+    "tables": 4,
+    "bytes": 118784
+  },
+  {
+    "path": "data/adx_similarity_store.sqlite3",
+    "engine": "sqlite",
+    "integrity": "ok",
+    "tables": 2,
+    "bytes": 28672
+  },
+  {
+    "path": "data/canonical_runtime.sqlite3",
+    "engine": "sqlite",
+    "integrity": "ok",
+    "tables": 70,
+    "bytes": 1110016
+  },
+  {
+    "path": "data/quant_app.sqlite3",
+    "engine": "sqlite",
+    "integrity": "ok",
+    "tables": 4,
+    "bytes": 114688
+  },
+  {
+    "path": "data/regime_trust_history.duckdb",
+    "engine": "duckdb",
+    "integrity": "OPEN_OK",
+    "tables": 7,
+    "bytes": 274432
+  }
+]

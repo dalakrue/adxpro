@@ -1,0 +1,59 @@
+{
+  "generated_at": "2026-06-21T15:26:16.055418+00:00",
+  "scope": "best-effort reconstructed package from truncated upload",
+  "pytest": {
+    "command": "python -m pytest -q --junitxml=artifacts/final_pytest_20260621.xml",
+    "tests": 17,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "passed": 17,
+    "duration_seconds": 1.46,
+    "process_elapsed_seconds": 4.36,
+    "max_rss_kb": 435408,
+    "status": "PASS"
+  },
+  "compile": {
+    "python_file_count": 458,
+    "compiled": 458,
+    "errors": [],
+    "duration_seconds": 0.794
+  },
+  "app_import": "PASS",
+  "streamlit_startup": {
+    "command": "streamlit run app.py --server.headless true --server.port 8766",
+    "health_endpoint": "ok",
+    "status": "PASS"
+  },
+  "database_integrity": [
+    {
+      "path": "data/adx_runtime_store.sqlite3",
+      "integrity_check": "ok",
+      "table_count": 4,
+      "bytes": 118784
+    },
+    {
+      "path": "data/adx_similarity_store.sqlite3",
+      "integrity_check": "ok",
+      "table_count": 2,
+      "bytes": 28672
+    },
+    {
+      "path": "data/canonical_runtime.sqlite3",
+      "integrity_check": "ok",
+      "table_count": 79,
+      "bytes": 1273856
+    },
+    {
+      "path": "data/quant_app.sqlite3",
+      "integrity_check": "ok",
+      "table_count": 4,
+      "bytes": 114688
+    }
+  ],
+  "limitations": [
+    "Only tests present or reconstructed in the recovered package were runnable; tests lost in the truncated upload are unavailable.",
+    "No verified full latest protected Settings calculation was executed.",
+    "Real iPhone Safari screenshots and full browser clipboard/export interactions were not available."
+  ]
+}

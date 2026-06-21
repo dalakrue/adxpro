@@ -1,0 +1,204 @@
+import time
+import streamlit as st
+
+from core.common import DEFAULT_TABS, log_event
+from core.styles import request_close_sidebar
+from core.ui_relationship import mark_navigation, sync_shared_connection_signature
+from core.ui.effects import queue_ui_popup
+from core.data_connectors import manual_connect
+from core.websocket_feed import render_websocket_panel, websocket_status
+from core.system_upgrade import sidebar_health_card, add_snapshot_button
+from core.system_contract import render_sidebar_mini_contract, record_system_event
+from core.system_relations import render_system_relation_hub
+from core.global_upgrade import render_sidebar_upgrade_panel, render_sidebar_pro_header, data_quality, get_live_df
+from core.ui.compact import render_metric_cards
+from core.full_system_upgrade import render_sidebar_v21_top, queue_popup, build_copy_payload
+
+try:
+    from streamlit_autorefresh import st_autorefresh
+except Exception:
+    def st_autorefresh(*args, **kwargs):
+        return None
+
+
+from .timer import _sidebar_timer_panel
+from .state import _init_sidebar_state, _safe_log_event, _normalize_symbol, _set_mode, _open_tab
+from .timer import _safe_rerun
+from .connection import _connect_now
+from .panels import _priority_rank, _sidebar_download_center, _disconnect_shared_state, _sidebar_deep_sync_from_shared, _sidebar_one_click_console
+
+
+def _sidebar_reversal_top_panel():
+    """Sidebar V17: keep 10-Reversal status at the top before connector controls."""
+    try:
+        import pandas as pd
+        score = st.session_state.get("last_reversal_score", st.session_state.get("reversal_score", 0))
+        engine = st.session_state.get("last_reversal_engine", {})
+        if isinstance(engine, dict):
+            score = engine.get("active_count", score)
+        try:
+            score_i = int(round(float(score or 0)))
+        except Exception:
+            score_i = 0
+        scan = st.session_state.get("home_reversal_25d_scan")
+        low_count = 0
+        high_count = 0
+        if isinstance(scan, pd.DataFrame) and not scan.empty:
+            col = "10_reversal_score" if "10_reversal_score" in scan.columns else "active_count" if "active_count" in scan.columns else "score" if "score" in scan.columns else None
+            if col:
+                vals = pd.to_numeric(scan[col], errors="coerce")
+                low_count = int((vals <= 3).sum())
+                high_count = int((vals >= 8).sum())
+        with st.expander("🚨 Top 10-Reversal status", expanded=False):
+            c1, c2, c3 = st.columns(3)
+            c1.metric("Now", f"{score_i}/10")
+            c2.metric("≤3 Calm", low_count)
+            c3.metric("8+ Locked", high_count)
+            st.caption("Sidebar placement upgraded: reverse-decision status appears before connector/settings sections. Full tables remain at the top of Home.")
+    except Exception:
+        pass
+
+def sidebar_nav():
+    """V24 simplified sidebar.
+
+    Only four visible blocks remain:
+    1. Home tab button
+    2. Other tab button
+    3. Connector open/close field
+    4. Timer open/close field
+
+    All heavy pages are lazy-rendered after the user manually presses Run
+    Calculate in the relevant inner workspace.
+    """
+    _init_sidebar_state()
+
+    with st.sidebar:
+        st.markdown("### ⚡ Quant Control")
+        st.caption("Simple sidebar: Home, Other, Connector, Timer.")
+
+        # 1) Home button
+        home_active = st.session_state.get("tab_choice", "Home") == "Home"
+        if st.button(("✅ 🏠 Home" if home_active else "🏠 Home"), use_container_width=True, key="nav_home_v24"):
+            _open_tab("Home")
+
+        # 2) Other button
+        other_active = st.session_state.get("tab_choice", "Home") == "Other"
+        if st.button(("✅ 📂 Other" if other_active else "📂 Other"), use_container_width=True, key="nav_other_v24"):
+            _open_tab("Other")
+
+        # 3) Connector field open/close
+        with st.expander("🔌 Connector Field — Open / Close", expanded=False):
+            st.caption("Connect manually only. It will not auto-run Engine, Train Data, Database, Pre Original, Profile, or Metric tables.")
+
+            nav_symbol = st.text_input(
+                "Symbol",
+                value=st.session_state.get("symbol", "EURUSD"),
+                key="sidebar_symbol_v24",
+                placeholder="EURUSD / XAUUSD / GBPUSD",
+            )
+            st.session_state.symbol = _normalize_symbol(nav_symbol)
+
+            connector_options = ["twelve", "mt5", "doo_bridge", "fallback", "safe_demo"]
+            current_mode = st.session_state.get("connector_mode", "twelve")
+            if current_mode not in connector_options:
+                current_mode = "twelve"
+            connector_mode = st.selectbox(
+                "API source",
+                connector_options,
+                index=connector_options.index(current_mode),
+                key="sidebar_connector_mode_v24",
+            )
+            st.session_state.connector_mode = connector_mode
+
+            tfs = ["M1", "M2", "M5", "M15", "H1", "H4", "D1", "CUSTOM"]
+            current_tf = str(st.session_state.get("timeframe", "H1") or "H1").upper()
+            if current_tf not in tfs:
+                current_tf = "H1"
+            timeframe = st.selectbox(
+                "Timeframe",
+                tfs,
+                index=tfs.index(current_tf),
+                key="sidebar_timeframe_v24",
+                help="CUSTOM loads H1 as main data and M1 only as confirmation data.",
+            )
+            st.session_state.timeframe = timeframe
+
+            bars = st.number_input(
+                "Candles / bars",
+                min_value=100,
+                max_value=250000,
+                value=int(st.session_state.get("connector_bars", 600)),
+                step=100,
+                key="sidebar_connector_bars_v24",
+            )
+            st.session_state.connector_bars = int(bars)
+
+            if connector_mode in ["twelve", "fallback"]:
+                st.session_state.twelve_api_key = st.text_input(
+                    "Twelve Data API key",
+                    value=st.session_state.get("twelve_api_key", ""),
+                    type="password",
+                    key="sidebar_twelve_api_key_v24",
+                )
+            if connector_mode in ["doo_bridge", "fallback"]:
+                st.session_state.doo_bridge_url = st.text_input(
+                    "Doo Bridge URL",
+                    value=st.session_state.get("doo_bridge_url", ""),
+                    key="sidebar_doo_bridge_url_v24",
+                    placeholder="http://127.0.0.1:8000/candles",
+                )
+                st.session_state.doo_bridge_token = st.text_input(
+                    "Doo Bridge token optional",
+                    value=st.session_state.get("doo_bridge_token", ""),
+                    type="password",
+                    key="sidebar_doo_bridge_token_v24",
+                )
+            if connector_mode == "safe_demo":
+                st.session_state.allow_safe_demo = True
+                st.warning("SAFE_DEMO is only for UI testing, not live trading decisions.")
+            else:
+                st.session_state.allow_safe_demo = st.checkbox(
+                    "Allow SAFE_DEMO fallback when real data fails",
+                    value=bool(st.session_state.get("allow_safe_demo", False)),
+                    key="sidebar_allow_safe_demo_v24",
+                )
+
+            c1, c2 = st.columns(2)
+            with c1:
+                if st.button("✅ Connect", use_container_width=True, key="sidebar_connect_api_v24"):
+                    _connect_now("Connect", quick=False)
+            with c2:
+                if st.button("⛔ Disconnect", use_container_width=True, key="sidebar_disconnect_api_v24"):
+                    _disconnect_shared_state("manual disconnect")
+
+            rows = len(st.session_state.get("last_df")) if st.session_state.get("last_df") is not None else 0
+            st.caption(
+                f"Status: {st.session_state.get('source','DISCONNECTED')} | "
+                f"{st.session_state.get('symbol','EURUSD')} | "
+                f"{st.session_state.get('timeframe','H1')} | {rows:,} rows"
+            )
+
+        # 4) Timer field open/close
+        with st.expander("⏱ Timer Field — Open / Close", expanded=False):
+            _sidebar_timer_panel()
+            st.caption("Timer is separate from calculation. Other/Metric pages calculate only after their manual Run Calculate button is clicked.")
+
+        # 5) UI/UX mode buttons, aligned like tab-choice buttons
+        with st.expander("📱🖥 UI Mode — Phone / Laptop", expanded=False):
+            st.caption("Switch layout size without changing calculation logic or connected data.")
+            ui_cols = st.columns(2)
+            phone_active = bool(st.session_state.get("phone_mode", False))
+            with ui_cols[0]:
+                if st.button(("✅ 📱 Phone UI" if phone_active else "📱 Phone UI"), use_container_width=True, key="sidebar_phone_ui_mode_v25"):
+                    st.session_state.phone_mode = True
+                    st.session_state["ui_navigation_click_ts"] = time.time()
+                    _safe_log_event("Sidebar UI mode changed: phone")
+                    _safe_rerun()
+            with ui_cols[1]:
+                if st.button(("✅ 🖥 Laptop UI" if not phone_active else "🖥 Laptop UI"), use_container_width=True, key="sidebar_laptop_ui_mode_v25"):
+                    st.session_state.phone_mode = False
+                    st.session_state["ui_navigation_click_ts"] = time.time()
+                    _safe_log_event("Sidebar UI mode changed: laptop")
+                    _safe_rerun()
+
+    return st.session_state.get("tab_choice", DEFAULT_TABS[0] if DEFAULT_TABS else "Home")

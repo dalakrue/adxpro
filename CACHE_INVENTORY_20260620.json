@@ -1,0 +1,86 @@
+{
+  "static_decorated_caches": [
+    {
+      "file": "core/finnhub_connector.py",
+      "function": "_shared_http_client",
+      "line": 232,
+      "decorator": "st.cache_resource(show_spinner=False)"
+    },
+    {
+      "file": "core/nlp_models.py",
+      "function": "load_artifact",
+      "line": 78,
+      "decorator": "_safe_cache_resource"
+    },
+    {
+      "file": "core/nlp_models.py",
+      "function": "load_finbert",
+      "line": 296,
+      "decorator": "_safe_cache_resource"
+    },
+    {
+      "file": "core/nlp_models.py",
+      "function": "load_abstractive_model",
+      "line": 334,
+      "decorator": "_safe_cache_resource"
+    },
+    {
+      "file": "core/nlp_related_priority_20260615.py",
+      "function": "_cached_table",
+      "line": 215,
+      "decorator": "st.cache_data(ttl=300, show_spinner=False, max_entries=12)"
+    },
+    {
+      "file": "core/runtime_cache_20260617.py",
+      "function": "cached_clean_ohlc",
+      "line": 27,
+      "decorator": "cache_data(show_spinner=False, ttl=900, max_entries=24)"
+    },
+    {
+      "file": "core/runtime_cache_20260617.py",
+      "function": "cached_display_dataframe",
+      "line": 64,
+      "decorator": "cache_data(show_spinner=False, ttl=600, max_entries=32)"
+    },
+    {
+      "file": "core/runtime_cache_20260617.py",
+      "function": "cached_export_csv",
+      "line": 115,
+      "decorator": "cache_data(show_spinner=False, ttl=900, max_entries=16)"
+    },
+    {
+      "file": "core/runtime_cache_20260617.py",
+      "function": "cached_nlp_normalize",
+      "line": 128,
+      "decorator": "cache_data(show_spinner=False, ttl=1800, max_entries=32)"
+    },
+    {
+      "file": "tabs/pre_clean_split/data.py",
+      "function": "load_twelve",
+      "line": 107,
+      "decorator": "st.cache_data(ttl=300, show_spinner=False)"
+    },
+    {
+      "file": "tabs/pre_clean_split/data.py",
+      "function": "load_mt5",
+      "line": 172,
+      "decorator": "st.cache_data(ttl=300, show_spinner=False)"
+    },
+    {
+      "file": "core/app/imports.py",
+      "function": "import_module_cached",
+      "line": 9,
+      "decorator": "lru_cache(maxsize=64)"
+    }
+  ],
+  "tinylfu": {
+    "file": "core/tinylfu_runtime_cache_20260620.py",
+    "key_contract": "caller metadata only; never secrets/raw questions",
+    "ttl": "process lifetime; bounded by frequency admission and LRU victim",
+    "max_entries": 48,
+    "max_bytes": 12000000,
+    "invalidation": "canonical calculation/data signature in key; process restart clears"
+  },
+  "history_browser": "column-projected SQLite result keyed by table, calculation identity, selected columns, limit and phone/desktop mode; exports excluded",
+  "limitations": "Static inventory cannot know runtime object sizes until a real session; size diagnostics are recorded for TinyLFU and browser payloads."
+}

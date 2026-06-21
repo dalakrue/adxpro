@@ -1,0 +1,3 @@
+import streamlit as st
+from ui.lunch_four_core_fields_20260619 import render_lunch_six_core_fields
+render_lunch_six_core_fields()

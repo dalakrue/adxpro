@@ -1,0 +1,32 @@
+ADX Quant Pro — Import Error Repair Report
+Date: 2026-06-21
+
+REPORTED ERROR
+No module named 'core.legacy_impl.system_contract_impl_parts'
+
+ROOT CAUSE
+The system contract and several other compatibility modules dynamically imported source fragments from nested part packages. A deployment that omitted or failed to resolve any nested part folder stopped during startup.
+
+FIX APPLIED
+1. Reconstructed core/legacy_impl/system_contract_impl.py as one self-contained Python module.
+2. Removed its runtime dependency on core/legacy_impl/system_contract_impl_parts.
+3. Reconstructed every other dynamic split-loader module in the project as self-contained source to prevent the same deployment failure in other tabs.
+4. Preserved the existing functions, calculations, UI patches, and post-loader overrides.
+5. Kept app.py as the recommended Streamlit Cloud entry point.
+6. Kept runtime.txt set to python-3.12.
+
+VALIDATION COMPLETED
+- Compiled every Python file successfully with compileall.
+- Imported core.legacy_impl.system_contract_impl successfully.
+- Imported core.system_contract successfully.
+- Imported core.legacy_impl.global_upgrade_impl successfully.
+- Imported core.pro_terminal_uiux successfully.
+- Imported tabs.home successfully.
+- Ran app.py with Streamlit AppTest successfully.
+- Opened the application as Guest successfully.
+- Triggered Run Calculation successfully.
+- Observed 0 Streamlit exceptions, 0 st.error outputs, and 0 warnings in the tested startup/calculation path.
+
+DEPLOYMENT
+Streamlit Cloud main file path: app.py
+Local command: streamlit run app.py

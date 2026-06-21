@@ -1,0 +1,47 @@
+[
+  {
+    "zip_path": "ADX_Quant_Pro_EURUSD_H1_Lunch_Corrections_20260621/data/adx_runtime_store.sqlite3",
+    "current_path": "data/adx_runtime_store.sqlite3",
+    "database_type": ".sqlite3",
+    "original_sha256": "e4359bd5d74852e658fe16a794dd3743ae0f94682be9a133d67eb3f30bc37a02",
+    "current_sha256": "e4359bd5d74852e658fe16a794dd3743ae0f94682be9a133d67eb3f30bc37a02",
+    "unchanged": true,
+    "size_bytes": 118784
+  },
+  {
+    "zip_path": "ADX_Quant_Pro_EURUSD_H1_Lunch_Corrections_20260621/data/adx_similarity_store.sqlite3",
+    "current_path": "data/adx_similarity_store.sqlite3",
+    "database_type": ".sqlite3",
+    "original_sha256": "22411dd39ea2a47e0ce1469a3040d55ca4df1eb3674af3e4821292f6b464fa46",
+    "current_sha256": "22411dd39ea2a47e0ce1469a3040d55ca4df1eb3674af3e4821292f6b464fa46",
+    "unchanged": true,
+    "size_bytes": 28672
+  },
+  {
+    "zip_path": "ADX_Quant_Pro_EURUSD_H1_Lunch_Corrections_20260621/data/canonical_runtime.sqlite3",
+    "current_path": "data/canonical_runtime.sqlite3",
+    "database_type": ".sqlite3",
+    "original_sha256": "74262ebec6d4fb5709cf56223a229e572689bf5ce1c36ec0dfb51bd72136b7b3",
+    "current_sha256": "74262ebec6d4fb5709cf56223a229e572689bf5ce1c36ec0dfb51bd72136b7b3",
+    "unchanged": true,
+    "size_bytes": 1110016
+  },
+  {
+    "zip_path": "ADX_Quant_Pro_EURUSD_H1_Lunch_Corrections_20260621/data/quant_app.sqlite3",
+    "current_path": "data/quant_app.sqlite3",
+    "database_type": ".sqlite3",
+    "original_sha256": "1f849b243d95b2fb15aecc7391be46de192bbf3485a4ab3bb56e2b6b9052949e",
+    "current_sha256": "1f849b243d95b2fb15aecc7391be46de192bbf3485a4ab3bb56e2b6b9052949e",
+    "unchanged": true,
+    "size_bytes": 114688
+  },
+  {
+    "zip_path": "ADX_Quant_Pro_EURUSD_H1_Lunch_Corrections_20260621/data/regime_trust_history.duckdb",
+    "current_path": "data/regime_trust_history.duckdb",
+    "database_type": ".duckdb",
+    "original_sha256": "00b0f0a6b9d6deb723771c1ac124bed1f5a9ad625bbbb39daf63a530595487cb",
+    "current_sha256": "00b0f0a6b9d6deb723771c1ac124bed1f5a9ad625bbbb39daf63a530595487cb",
+    "unchanged": true,
+    "size_bytes": 274432
+  }
+]

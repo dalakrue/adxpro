@@ -1,0 +1,52 @@
+{
+  "base_zip": "28b67659-79d0-4eb4-b1cc-bb48744c3b08.zip",
+  "base_zip_sha256": "9a769f943a2d11ebbba30548bb9bfa8c81ca7d71bfefb2fed82f78461f5deb1a",
+  "build_date": "2026-06-19",
+  "entry_file": "main.py",
+  "modified_files": [
+    "VERSION.txt",
+    "core/compact_canonical_20260619.py",
+    "core/decision_product_engine_20260617.py",
+    "core/settings_run_orchestrator_20260617.py",
+    "tabs/antd_page_router_20260615.py",
+    "tabs/final_lunch_upgrade_20260617.py",
+    "ui/powerbi_cached_renderer_20260619.py",
+    "tests/test_full_metric_canonical_sync_20260618.py",
+    "tests/test_ui_restoration_20260619.py"
+  ],
+  "new_files": [
+    ".gitignore",
+    "RUN_PROJECT.md",
+    "UPGRADE_CHANGELOG_20260619.md",
+    "DATABASE_MIGRATION_20260619.md",
+    "MODIFIED_FILES_20260619.txt",
+    "core/trust_config_20260619.py",
+    "core/trust_history_20260619.py",
+    "ui/trusted_operational_metrics_20260619.py",
+    "ui/full_metric_history_center_20260619.py",
+    "tests/test_trust_history_20260619.py",
+    "tests/test_selective_wait_policy_20260619.py"
+  ],
+  "removed_files": [
+    "core/app/registry.py.bak_lunch_upgrade",
+    "core/config/defaults.py.bak_lunch_upgrade",
+    "core/database.py.bak_database_original",
+    "core/navigation_parts/main.py.bak_lunch_upgrade",
+    "tabs/eurusd_h1_matrix.py.bak_lunch_upgrade",
+    "tabs/home.py.bak_before_5layer_powerbi_upgrade",
+    "tabs/home.py.bak_lunch_upgrade",
+    "tabs/home.py.bak_major_regime_powerbi_upgrade_2026_06_09",
+    "tabs/profile_dashboard_split/helpers.py.bak_profile_original",
+    "tabs/profile_dashboard_split/profile_dashboard.py.bak_profile_original",
+    "tabs/profile_dashboard_split/styles.py.bak_profile_original",
+    "tabs/profile_dashboard_split/tabs.py.bak_profile_original"
+  ],
+  "protected_full_metric_adapter_sha256": "b596a04ff0a1265bf1b64c95e665597e3b0eccc9a22c5b75b7be50fde82e506b",
+  "protected_full_metric_adapter_unchanged": true,
+  "validation": {
+    "compileall": "PASS",
+    "pytest": "179/179 PASS",
+    "streamlit_health": "PASS",
+    "apptest": "PASS"
+  }
+}

@@ -1,0 +1,129 @@
+{
+  "generated_at": "2026-06-21T15:26:21.707161+00:00",
+  "release_type": "BEST_EFFORT_RECONSTRUCTION_FROM_TRUNCATED_UPLOAD",
+  "files_added_or_changed": [
+    {
+      "path": "services/__init__.py",
+      "sha256": "054f8ff2e014f6b66809498eede895ab80014c0257ec3e81ca27338a7238e521"
+    },
+    {
+      "path": "services/canonical_snapshot_store.py",
+      "sha256": "38a08fdecdb0ad453a0a275ef4a302bb6a1447e686f36305ceaa2a21edea9ea4"
+    },
+    {
+      "path": "services/tracing.py",
+      "sha256": "33d25f3d0bf51c13a4f9906901c90567d8a1c658f46dd2c06357beb66821c863"
+    },
+    {
+      "path": "services/position_sizing.py",
+      "sha256": "1e8ae84a721cec6bd08433f2b92c17d116114ec83dcf798426b26bf38cd24a6b"
+    },
+    {
+      "path": "ui/stable_ui_libs_20260615.py",
+      "sha256": "eceff15fc471c2352cadbab0719ec4c5618c359f966be109b5d0c3c6ffffb68e"
+    },
+    {
+      "path": "ui/home_master_control_bar_20260615.py",
+      "sha256": "faf5ef42aaabb82a85f3276218268443d1f98efbb55b7881ed060c929db73ef7"
+    },
+    {
+      "path": "ui/liquid_glass_theme_20260615.py",
+      "sha256": "2263c3bc48cc681e658276ffd29fa5e4bac692208d0c4b92e2966aaa2e0bf5fd"
+    },
+    {
+      "path": "ui/liquid_menu_popup_20260615.py",
+      "sha256": "01426ce6358758e955009221dbf3a6e4da37f3fc813aa0b30e845b608d081d4c"
+    },
+    {
+      "path": "ui/mobile_low_heat_20260617.py",
+      "sha256": "3101452ff15f001d56a6fed7030b98b07ce03906b66ab4a73c36fb88b388c562"
+    },
+    {
+      "path": "ui/nlp_research_panel.py",
+      "sha256": "1e30844df0c2b48d997245c1a4669443710c3e828ffcd6b52a592358fbf74384"
+    },
+    {
+      "path": "core/history_quality_store_20260621.py",
+      "sha256": "263e41db5b469746e02ee0577da83410987bb5531f01f75a7225f23fd5513c29"
+    },
+    {
+      "path": "core/settings_run_orchestrator_20260617.py",
+      "sha256": "1e77da3f07deaac98abdee22f84ff236821f9c8c2eac451836e1add861aa7cc8"
+    },
+    {
+      "path": "core/policy_decision_ledger_20260621.py",
+      "sha256": "8491aeed33263f92d90f0a3735e8c3ce650cad4eff741c355c1e61c1a75a5171"
+    },
+    {
+      "path": "core/regime_trust_store_20260621.py",
+      "sha256": "b3a7de05074fe8c018599a8b4437d733257a0fe930bd60f07a7a382a25caa008"
+    },
+    {
+      "path": "core/trust_history_20260619.py",
+      "sha256": "8e4577a535b0470e48d97372de3c991229e290798e983d741b0896815c47721d"
+    },
+    {
+      "path": "core/history_evidence_store_20260620.py",
+      "sha256": "cd6135fe39c700173b2a7117db0c81ea6308dae3fb23bd97f0c4096c74ccf8b9"
+    },
+    {
+      "path": "core/history_columnar_archive_20260620.py",
+      "sha256": "898440ddd7d79f1a26a4f38a534e718f693bd72b98386828d8d2d8617c20443a"
+    },
+    {
+      "path": "core/finnhub_connector.py",
+      "sha256": "96a633b98bad15f4dfe5701437b90342d3f7f6d54afca7c7109d9b9e0df23bf2"
+    },
+    {
+      "path": "tabs/pre_clean_split/data.py",
+      "sha256": "597fc2923f44975cba50f766abe94b167398d3feae753fded6a0e1affb2f940a"
+    },
+    {
+      "path": "ui/lunch_four_core_fields_20260619.py",
+      "sha256": "045d80b8558e363b08515dfac0fee9be726cf8a6b6974e0087da04f23165bbde"
+    },
+    {
+      "path": "ui/powerbi_cached_renderer_20260619.py",
+      "sha256": "77d4438351dea469142ad1b60ca9a4f53facd1cf296a1a28a1c6c5c90ab1f9b8"
+    },
+    {
+      "path": "tabs/antd_page_router_20260615.py",
+      "sha256": "d3fee2d6b321e3b33264c0412e3a55724065a6c0a8cf5a19209a3a777352c6a6"
+    },
+    {
+      "path": "migrations/20260621_history_quality_mobile.sql",
+      "sha256": "b90fca57ce6c46fb6c55921e31fdecd97f5625566b80947cd98444d52f17de44"
+    },
+    {
+      "path": "scripts_migrate_history_quality_20260621.py",
+      "sha256": "4bf7241a975e42a7995679ed723734ae6ceb04d6b363c867b7c1c0a211a2803a"
+    },
+    {
+      "path": "tests/test_history_quality_mobile_20260621.py",
+      "sha256": "4f344f396b28c6be1f380fddcc26327d3cfdd0b3935eae4836a6a2a4beaed2f7"
+    },
+    {
+      "path": "tests/test_compile_and_runtime_20260621.py",
+      "sha256": "582d31adf8464a464f973311fba1afd39a3abcc8c08dd515d649e1ea8ac54e14"
+    },
+    {
+      "path": "tools/benchmark_history_quality_20260621.py",
+      "sha256": "e73b969ee4474a2b19296fd1a0a158870e02e53943e89e438efc096edaf891d6"
+    },
+    {
+      "path": "tools/bench_lunch_app_20260621.py",
+      "sha256": "822c0c1331c852a8557cf71acaec5ea292f92f6754c309afc4f80e8eb263cecc"
+    },
+    {
+      "path": "tools/generate_release_reports_20260621.py",
+      "sha256": "9a4c48db17ffcd486f44057376249bf4704793eeee45bce58f61b72130b11dad"
+    }
+  ],
+  "protected_calculation_files_intentionally_modified": [],
+  "notes": [
+    "No trading formula or decision engine was intentionally changed.",
+    "Settings orchestrator changed only to stage/validate additive evidence before the existing single publication call.",
+    "Router changed to use true-gated Lunch renderer.",
+    "Missing latest files were reconstructed as bounded interfaces; see EVIDENCE_AND_LIMITATIONS.md."
+  ]
+}

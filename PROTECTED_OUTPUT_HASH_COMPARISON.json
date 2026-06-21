@@ -1,0 +1,128 @@
+{
+  "comparison_basis": "run_snapshots table in untouched recovered upload vs improved database",
+  "generated_at": "2026-06-21T15:26:21.707161+00:00",
+  "status": "PASS",
+  "before_snapshot_count": 9,
+  "after_snapshot_count": 9,
+  "all_snapshot_rows_identical": true,
+  "comparisons": [
+    {
+      "run_id": "20260618T040000Z-112d79e77103",
+      "generation": 4,
+      "before": {
+        "checksum": "754f91fb0442b77ac6878cd97bf9a4a64d5cc550c52fd9a369e9e2da08b8ba2b",
+        "snapshot_json_sha256": "30ed529261d67097bfd4af9b41edc189f91ce0411e3189a3c5ea5bfed97b108d"
+      },
+      "after": {
+        "checksum": "754f91fb0442b77ac6878cd97bf9a4a64d5cc550c52fd9a369e9e2da08b8ba2b",
+        "snapshot_json_sha256": "30ed529261d67097bfd4af9b41edc189f91ce0411e3189a3c5ea5bfed97b108d"
+      },
+      "identical": true
+    },
+    {
+      "run_id": "20260618T040000Z-226faea8a7c8",
+      "generation": 4,
+      "before": {
+        "checksum": "3392851ac7958cccad15b533336b5c81ccf8ec03b192dca817fa73591f743793",
+        "snapshot_json_sha256": "cff1cef79a3a0518cc0496a933b6070fc8870dc0a347056d169acb220c23edfe"
+      },
+      "after": {
+        "checksum": "3392851ac7958cccad15b533336b5c81ccf8ec03b192dca817fa73591f743793",
+        "snapshot_json_sha256": "cff1cef79a3a0518cc0496a933b6070fc8870dc0a347056d169acb220c23edfe"
+      },
+      "identical": true
+    },
+    {
+      "run_id": "20260618T040000Z-3a064fbd6d5a",
+      "generation": 4,
+      "before": {
+        "checksum": "80902d77ce2de22db50b14776649d7df6394c60dfe312c74ad9b8fd234602f25",
+        "snapshot_json_sha256": "adecb7a7c613d36cd91a43e18a5ea989abac19536a1a0357496d6b9fcaba5c7e"
+      },
+      "after": {
+        "checksum": "80902d77ce2de22db50b14776649d7df6394c60dfe312c74ad9b8fd234602f25",
+        "snapshot_json_sha256": "adecb7a7c613d36cd91a43e18a5ea989abac19536a1a0357496d6b9fcaba5c7e"
+      },
+      "identical": true
+    },
+    {
+      "run_id": "20260618T040000Z-4d5f1a670b04",
+      "generation": 4,
+      "before": {
+        "checksum": "e03b7f9107d20eafe64697067d0f69d3f2ca2b5d684492c22a9f59c258ed1124",
+        "snapshot_json_sha256": "1f882517532102b857c1e5d4a5eef723cca4ba2a3e1c4c16862fe28bfe534f04"
+      },
+      "after": {
+        "checksum": "e03b7f9107d20eafe64697067d0f69d3f2ca2b5d684492c22a9f59c258ed1124",
+        "snapshot_json_sha256": "1f882517532102b857c1e5d4a5eef723cca4ba2a3e1c4c16862fe28bfe534f04"
+      },
+      "identical": true
+    },
+    {
+      "run_id": "20260618T040000Z-5ecdbd728a52",
+      "generation": 4,
+      "before": {
+        "checksum": "5b61f128266476296b078ee016b799216b91320926f3520ccd54e963d86c9eb7",
+        "snapshot_json_sha256": "d8f9365c3b702789897234bcad07a2d413beb60634e3417d6a8215323f6c4ac3"
+      },
+      "after": {
+        "checksum": "5b61f128266476296b078ee016b799216b91320926f3520ccd54e963d86c9eb7",
+        "snapshot_json_sha256": "d8f9365c3b702789897234bcad07a2d413beb60634e3417d6a8215323f6c4ac3"
+      },
+      "identical": true
+    },
+    {
+      "run_id": "20260618T040000Z-cf3636a4ff6d",
+      "generation": 4,
+      "before": {
+        "checksum": "5149c0c7a3e18bf7bb797abf2f3cc15fbeb875fb13a5cde25b2cd79ee9ed614d",
+        "snapshot_json_sha256": "fead7fb3df9102615ffd04ee0df32fdc9bd317842ef75fd6f3aa424c048e0ba4"
+      },
+      "after": {
+        "checksum": "5149c0c7a3e18bf7bb797abf2f3cc15fbeb875fb13a5cde25b2cd79ee9ed614d",
+        "snapshot_json_sha256": "fead7fb3df9102615ffd04ee0df32fdc9bd317842ef75fd6f3aa424c048e0ba4"
+      },
+      "identical": true
+    },
+    {
+      "run_id": "GOOD",
+      "generation": 1,
+      "before": {
+        "checksum": "74305fd6f072c0f3df1a0b98e972bf92fc2728dc8526f03d9a15739879900def",
+        "snapshot_json_sha256": "7758b73dbac562892ee22761287fd9f386581eb2fde289266b92b7b68d866ce6"
+      },
+      "after": {
+        "checksum": "74305fd6f072c0f3df1a0b98e972bf92fc2728dc8526f03d9a15739879900def",
+        "snapshot_json_sha256": "7758b73dbac562892ee22761287fd9f386581eb2fde289266b92b7b68d866ce6"
+      },
+      "identical": true
+    },
+    {
+      "run_id": "RUN-1",
+      "generation": 1,
+      "before": {
+        "checksum": "ab7ca736dc34836afb9a85505fe24937c8f779d6394bbd8e9e9cbed752bc37bf",
+        "snapshot_json_sha256": "564290b7e0c73965b1404bcc1019d8b3871aec1c234b64e06306e754b8e8b64c"
+      },
+      "after": {
+        "checksum": "ab7ca736dc34836afb9a85505fe24937c8f779d6394bbd8e9e9cbed752bc37bf",
+        "snapshot_json_sha256": "564290b7e0c73965b1404bcc1019d8b3871aec1c234b64e06306e754b8e8b64c"
+      },
+      "identical": true
+    },
+    {
+      "run_id": "RUN-X",
+      "generation": 7,
+      "before": {
+        "checksum": "8b8cfd88b9b65a7cd9727eb4ecceb08c693c06017af8e195645b5e10b935b3ce",
+        "snapshot_json_sha256": "08df4bdb9df532ce028c403fc72575b9b84a6a221e6dbe1752b06a88d24550d0"
+      },
+      "after": {
+        "checksum": "8b8cfd88b9b65a7cd9727eb4ecceb08c693c06017af8e195645b5e10b935b3ce",
+        "snapshot_json_sha256": "08df4bdb9df532ce028c403fc72575b9b84a6a221e6dbe1752b06a88d24550d0"
+      },
+      "identical": true
+    }
+  ],
+  "limitation": "This proves stored canonical snapshots were not altered. It does not reproduce a new protected calculation because the uploaded source archive is truncated."
+}

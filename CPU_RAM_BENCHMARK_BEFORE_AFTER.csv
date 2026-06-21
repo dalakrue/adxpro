@@ -1,0 +1,19 @@
+scenario,variant,status,wall_ms_median,cpu_ms_median,peak_python_bytes_median,rss_delta_bytes_median,query_count,rows_fetched,columns_fetched,payload_bytes,cache_status,rendered_rows,chart_points,chart_traces,rerun_count,notes
+Open Field 1 history,BEFORE_SELECT_STAR_EAGER_DECODE,PASS,2394.917,2260.0,71469749,10403840,1,30000,7,56889032,,30000,,,,Synthetic 30k-row reproducible history workload; represents removed active-path anti-pattern.
+Open Field 1 history,AFTER_SQL_PROJECTION_LIMIT_LAZY_JSON,PASS,61.447,60.0,30328,0,1,50,5,12210,,50,,,,Synthetic 30k-row reproducible history workload.
+Search history,BEFORE_LOAD_ALL_FILTER_PYTHON,PASS,486.351,460.0,42126754,1048576,1,30000,7,32949032,,50,,,,Synthetic 30k-row search.
+Search history,AFTER_SQL_FILTER_LIMIT,PASS,62.703,60.0,23541,0,1,50,4,9413,,50,,,,Synthetic 30k-row search.
+Page history,BEFORE_LOAD_ALL_SLICE,PASS,633.175,600.0,42126334,0,1,30000,7,32949032,,50,,,,Synthetic 30k-row paging.
+Page history,AFTER_SQL_LIMIT_OFFSET,PASS,74.182,70.0,23628,0,1,50,4,9516,,50,,,,Synthetic 30k-row paging.
+Open Lunch all heavy fields closed,AFTER_TRUE_LOAD_GATES,PASS,5.338,10.0,65053,24576,0,0,0,0,N/A,0,,,1,Real Streamlit AppTest; six toggles remain false.
+Ten tab/field-closed reruns,AFTER_TRUE_LOAD_GATES,PASS,50.701,50.0,299883,24576,0,0,0,0,N/A,0,,,10,AppTest reruns with all heavy fields closed.
+Settings quality evidence stage,AFTER_SINGLE_PASS_BOUNDED,PASS,29.059,30.0,689915,0,0,5000,6,10969,MISS,0,,,,"5,000 completed H1 rows; no protected calculation included."
+Cold startup to health,AFTER_RECONSTRUCTED_RUNTIME,PASS,7309.242,6140.0,,382885888,,,,,,,,,1,Exact local Streamlit health startup. Current latest-upload baseline unavailable because source ZIP is truncated.
+Settings Run Calculation full protected engine,NOT_RUN,NOT_VERIFIED,,,,,,,,,,,,,,Not claimed: exact latest source/browser automation is unavailable from the truncated upload.
+Open Field 2 Power BI full browser,NOT_RUN,NOT_VERIFIED,,,,,,,,,,,,,,Not claimed: exact latest source/browser automation is unavailable from the truncated upload.
+Open Field 3 full browser,NOT_RUN,NOT_VERIFIED,,,,,,,,,,,,,,Not claimed: exact latest source/browser automation is unavailable from the truncated upload.
+Open Field 4 full browser,NOT_RUN,NOT_VERIFIED,,,,,,,,,,,,,,Not claimed: exact latest source/browser automation is unavailable from the truncated upload.
+Open AI Assistant full browser,NOT_RUN,NOT_VERIFIED,,,,,,,,,,,,,,Not claimed: exact latest source/browser automation is unavailable from the truncated upload.
+Copy Short / Copy All / exact export browser transfer,NOT_RUN,NOT_VERIFIED,,,,,,,,,,,,,,Not claimed: exact latest source/browser automation is unavailable from the truncated upload.
+Phone viewport visual overflow screenshot,NOT_RUN,NOT_VERIFIED,,,,,,,,,,,,,,Not claimed: exact latest source/browser automation is unavailable from the truncated upload.
+Laptop viewport visual screenshot,NOT_RUN,NOT_VERIFIED,,,,,,,,,,,,,,Not claimed: exact latest source/browser automation is unavailable from the truncated upload.

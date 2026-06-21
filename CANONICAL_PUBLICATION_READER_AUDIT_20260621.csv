@@ -1,0 +1,72 @@
+﻿category,file,line,source
+CANONICAL_READ,core/adx_shared_sync_20260615.py,719,canonical = get_canonical(st.session_state)
+CANONICAL_READ,core/canonical_runtime_20260617.py,611,canonical = get_canonical(state)
+CANONICAL_READ,core/lunch_search_20260621.py,145,value = get_canonical(state)
+CANONICAL_READ,core/nlp_related_priority_20260615.py,83,canonical = get_canonical(st.session_state)
+CANONICAL_READ,core/regime_sync_20260617.py,427,"canonical = {} if st.session_state.get(""settings_calculation_lock_20260617"") else get_canonical(st.session_state)"
+CANONICAL_READ,core/secure_api_startup_20260619.py,102,canonical = get_canonical(state)
+CANONICAL_READ,tabs/ai_assistant_compact_20260619.py,74,canonical = get_canonical(state)
+CANONICAL_READ,tabs/ai_assistant_compact_20260619.py,90,canonical = get_canonical(st.session_state)
+CANONICAL_READ,tabs/ai_assistant_compact_20260619.py,177,canonical = get_canonical(st.session_state)
+CANONICAL_READ,tabs/antd_page_router_20260615.py,82,canonical = get_canonical(st.session_state)
+CANONICAL_READ,tabs/clean_decision_regime_ui_20260614.py,358,canonical = get_canonical(st.session_state)
+CANONICAL_READ,tabs/dinner_morning_data_patch_20260614.py,1046,canonical = get_canonical(st.session_state)
+CANONICAL_READ,tabs/dinner_unified_center_20260617.py,82,"context = {""shared"": shared_from_runtime(st.session_state), ""canonical"": get_canonical(st.session_state)}"
+CANONICAL_READ,tabs/research.py,575,canonical = get_canonical(st.session_state)
+CANONICAL_READ,ui/canonical_copy_export_20260619.py,37,canonical = get_canonical(state)
+CANONICAL_READ,ui/decision_product_panel_20260617.py,69,canonical = get_canonical(st.session_state)
+CANONICAL_READ,ui/finder_canonical_view_20260619.py,42,canonical=get_canonical(state); summary=get_compact_summary(state)
+CANONICAL_READ,ui/full_metric_history_center_20260619.py,106,canonical = get_canonical(state)
+CANONICAL_READ,ui/full_metric_regime_inner_renderer_20260618.py,44,value = get_canonical(state)
+CANONICAL_READ,ui/full_metric_shared_renderer_20260618.py,121,canonical = get_canonical(st.session_state)
+CANONICAL_READ,ui/home_master_control_bar_20260615.py,70,canonical = get_canonical(st.session_state)
+CANONICAL_READ,ui/lunch_four_core_fields_20260619.py,47,value = get_canonical(state)
+CANONICAL_READ,ui/powerbi_cached_renderer_20260619.py,103,value = get_canonical(state)
+CANONICAL_READ,ui/regime_transition_trust_center_20260621.py,19,value = get_canonical(state)
+CANONICAL_READ,ui/risk_position_panel_20260619.py,51,canonical = get_canonical(state); summary = get_compact_summary(state)
+CANONICAL_READ,ui/similar_day_renderer_20260619.py,44,canonical = get_canonical(state)
+CANONICAL_READ,ui/system_readiness_20260621.py,413,canonical = get_canonical(state)
+CANONICAL_READ,ui/train_data_overview_20260619.py,29,state=state if state is not None else st.session_state; canonical=get_canonical(state); frame=_frame(state)
+CANONICAL_READ,ui/trusted_operational_metrics_20260619.py,103,canonical = get_canonical(state)
+CANONICAL_READ_DEFINITION,core/canonical_runtime_20260617.py,591,"def get_canonical(state: Mapping[str, Any]) -> Dict[str, Any]:"
+CANONICAL_SESSION_KEY_READ_OR_PROTECTION,core/adx_shared_sync_20260615.py,845,"""canonical"": st.session_state.get(""canonical_decision_result_20260617"") or st.session_state.get(""last_valid_canonical_decision_result_20260617"") or {},"
+CANONICAL_SESSION_KEY_READ_OR_PROTECTION,core/adx_shared_sync_20260615.py,846,"""run_id"": (st.session_state.get(""canonical_decision_result_20260617"") or {}).get(""run_id"") if isinstance(st.session_state.get(""canonical_decision_result_20260617""), dict) else None,"
+CANONICAL_SESSION_KEY_READ_OR_PROTECTION,core/app/refresh.py,67,"before_canonical = state.get(""canonical_result_20260617"") or state.get(""canonical_result"")"
+CANONICAL_SESSION_KEY_READ_OR_PROTECTION,core/app/refresh.py,89,"state.setdefault(""canonical_result_20260617"", before_canonical)"
+CANONICAL_SESSION_KEY_READ_OR_PROTECTION,core/canonical_runtime_20260617.py,19,"CANONICAL_KEY = ""canonical_decision_result_20260617"""
+CANONICAL_SESSION_KEY_READ_OR_PROTECTION,core/canonical_runtime_20260617.py,20,"LAST_VALID_KEY = ""last_valid_canonical_decision_result_20260617"""
+CANONICAL_SESSION_KEY_READ_OR_PROTECTION,core/canonical_runtime_20260617.py,498,"""metadata"": {""calculation_source"": ""canonical_decision_result_20260617"", ""one_way_legacy_adapter"": True, **canonical_identity(canonical)},"
+CANONICAL_SESSION_KEY_READ_OR_PROTECTION,core/lunch_search_20260621.py,150,"for key in (""canonical_decision_result"", ""canonical_decision_result_20260617"", ""canonical_result_20260617"", ""canonical_result""):"
+CANONICAL_SESSION_KEY_READ_OR_PROTECTION,core/operational_sync_20260618.py,149,"canonical = state.get(""canonical_decision_result_20260617"")"
+CANONICAL_SESSION_KEY_READ_OR_PROTECTION,core/operational_sync_20260618.py,198,"canonical = state.get(""canonical_decision_result_20260617"")"
+CANONICAL_SESSION_KEY_READ_OR_PROTECTION,core/regime_sync_20260617.py,136,"canonical = st.session_state.get(""canonical_decision_result_20260617"") or {}"
+CANONICAL_SESSION_KEY_READ_OR_PROTECTION,core/secure_api_startup_20260619.py,104,"canonical = state.get(""canonical_result_20260617"") or {}"
+CANONICAL_SESSION_KEY_READ_OR_PROTECTION,core/settings_run_orchestrator_20260617.py,253,"previous = st.session_state.get(""canonical_decision_result_20260617"") or {}"
+CANONICAL_SESSION_KEY_READ_OR_PROTECTION,core/settings_run_orchestrator_20260617.py,1351,"""preserved_last_valid"": bool(st.session_state.get(""last_valid_canonical_decision_result_20260617"")),"
+CANONICAL_SESSION_KEY_READ_OR_PROTECTION,core/snapshot_schema_20260619.py,102,"canonical = state.get(""canonical_decision_result_20260617"")"
+CANONICAL_SESSION_KEY_READ_OR_PROTECTION,tabs/clean_decision_regime_ui_20260614.py,360,"canonical = st.session_state.get(""canonical_result_20260617"") or {}"
+CANONICAL_SESSION_KEY_READ_OR_PROTECTION,tabs/dv_research_alignment_20260612.py,106,"canonical = st.session_state.get(""canonical_decision_result_20260617"", {})"
+CANONICAL_SESSION_KEY_READ_OR_PROTECTION,tabs/final_research_projection_auth_sync_20260612.py,98,"canonical = st.session_state.get(""canonical_decision_result_20260617"", {})"
+CANONICAL_SESSION_KEY_READ_OR_PROTECTION,tabs/final_three_center_upgrade_20260614.py,72,"canonical = st.session_state.get(""canonical_decision_result_20260617"") or {}"
+CANONICAL_SESSION_KEY_READ_OR_PROTECTION,tabs/final_three_center_upgrade_20260614.py,566,"canonical = st.session_state.get(""canonical_decision_result_20260617"") or {}"
+CANONICAL_SESSION_KEY_READ_OR_PROTECTION,tabs/finder_alignment_upgrade_20260611.py,180,"canonical = st.session_state.get(""canonical_decision_result_20260617"")"
+CANONICAL_SESSION_KEY_READ_OR_PROTECTION,tabs/finder_alignment_upgrade_20260611.py,182,"canonical = st.session_state.get(""last_valid_canonical_decision_result_20260617"")"
+CANONICAL_SESSION_KEY_READ_OR_PROTECTION,tabs/other.py,76,"canonical_ready = bool(st.session_state.get(""canonical_decision_result_20260617"")) and bool(st.session_state.get(""settings_run_complete_20260617"", True))"
+CANONICAL_SESSION_KEY_READ_OR_PROTECTION,tabs/reliability_control_center_20260614.py,575,"canonical = st.session_state.get(""canonical_decision_result_20260617"")"
+CANONICAL_SESSION_KEY_READ_OR_PROTECTION,tabs/research.py,104,"canonical = st.session_state.get(""canonical_decision_result_20260617"", {})"
+CANONICAL_SESSION_KEY_READ_OR_PROTECTION,ui/decision_product_panel_20260617.py,12,"KEY = ""canonical_decision_result_20260617"""
+CANONICAL_SESSION_KEY_READ_OR_PROTECTION,ui/decision_product_panel_20260617.py,19,"value = st.session_state.get(""last_valid_canonical_decision_result_20260617"")"
+CANONICAL_SESSION_KEY_READ_OR_PROTECTION,ui/full_metric_regime_inner_renderer_20260618.py,47,"value = state.get(""canonical_result_20260617"") or state.get(""canonical_result"")"
+CANONICAL_SESSION_KEY_READ_OR_PROTECTION,ui/lunch_four_core_fields_20260619.py,50,"value = state.get(""canonical_result_20260617"") or state.get(""canonical_result"")"
+CANONICAL_SESSION_KEY_READ_OR_PROTECTION,ui/powerbi_cached_renderer_20260619.py,106,"value = state.get(""canonical_result_20260617"") or state.get(""canonical_result"")"
+CANONICAL_SESSION_KEY_READ_OR_PROTECTION,ui/regime_transition_trust_center_20260621.py,22,"value = state.get(""canonical_decision_result"") or state.get(""canonical_decision_result_20260617"") or {}"
+CANONICAL_SESSION_KEY_READ_OR_PROTECTION,ui/similar_day_renderer_20260619.py,46,"canonical = state.get(""canonical_decision_result_20260617"") or state.get(""canonical_result_20260617"") or {}"
+PUBLISH_CALL,core/canonical_runtime_20260617.py,503,def publish_canonical_atomically(
+PUBLISH_CALL,core/canonical_runtime_20260617.py,539,"commit_snapshot(run_snapshot, history_bundle=dict(history_bundle or {}))"
+PUBLISH_CALL,core/settings_run_orchestrator_20260617.py,591,"from core.canonical_runtime_20260617 import proposed_generation, publish_canonical_atomically"
+PUBLISH_CALL,core/settings_run_orchestrator_20260617.py,1205,adapter = publish_canonical_atomically(
+PUBLISH_DEFINITION,services/canonical_snapshot_store.py,63,def commit_snapshot(
+SHARED_CALCULATION_CALL,core/app/runner.py,209,ensure_shared_calculation_result(force=False)
+SHARED_CALCULATION_CALL,core/settings_run_orchestrator_20260617.py,532,legacy_shared = ensure_shared_calculation_result(force=True)
+SHARED_CALCULATION_DEFINITION,core/adx_shared_sync_20260615.py,876,"def ensure_shared_calculation_result(force: bool = False) -> Dict[str, Any]:"
+SHARED_RESULT_SESSION_READ,tabs/ai_assistant_compact_20260619.py,77,"shared = state.get(""shared_calculation_result_20260615"") if isinstance(state, Mapping) else None"

@@ -1,0 +1,8 @@
+{
+  "status": "PASS",
+  "health_response": "ok",
+  "entrypoint": "app.py",
+  "headless": true,
+  "port": 8765,
+  "log_tail": "2026-06-21 06:35:58.278 Uvicorn server started on 0.0.0.0:8765\n2026-06-21 06:36:03.292 Did not auto detect external IP.\nPlease go to https://docs.streamlit.io/ for debugging hints.\n\n  You can now view your Streamlit app in your browser.\n\n  Local URL: http://localhost:8765\n  Network URL: http://172.26.36.14:8765\n\n  Stopping...\n"
+}

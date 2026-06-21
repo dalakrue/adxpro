@@ -1,0 +1,9 @@
+2026-06-11 Restore st.metric boards inside Data Visualization combined section.
+
+What changed:
+- Kept Data Visualization as only 2 public open/close sections.
+- Restored the disappeared st.metric cards inside the new Combined Uploaded Photo Sections + KNN/Greedy Logic section.
+- Restored Technical Logic st.metrics: Priority #1, Market Quality, Conflict Engine, Forecast Agreement, Next 1H expectation, Today expectation, MTF Regime.
+- Restored Important Fact st.metrics: Best Current Opportunity, Current Regime, Regime Gate, KNN Priority, Greedy Priority, Forecast Confidence, Market Health, Execution Quality, Survival Score, Tail Risk, Forecast Freshness, Volatility State, Highest Risk Warning.
+- Restored advanced boards inside nested open/close only inside the combined section: decision vote, profit factor/survival, forecast greeks/aging, volatility/expected move.
+- No old function/calculation/ML logic was removed. Heavy logic still runs after Run Calculating.
